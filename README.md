@@ -74,12 +74,13 @@ formatted_string = string.format(things="eels")
 print(formatted_string)
 ```
 
-The simple_render method within View calls the Python format function on a given template.
+The simple_render method within View calls the Python safe_substitute function on a given template, this works in a very similar fashion to the format function we saw previously.
 
 
 ```python
 def simple_render(self, template, **kwargs):
-        template = template.format(**kwargs)
+        template = string.Template(template)
+        template = template.safe_substitute(**kwargs)
         return  template
 ```
 
@@ -100,22 +101,53 @@ Here we're using \*\*kwargs again for the "global renders"...
 
 ```python
 def render(self, template, **kwargs):
-        keys = self.global_renders.copy() #Not the best way to do this, but backwards compatible from PEP448, in Python 3.5+ use keys = {**this.global_renters, **kwargs}
-        keys.update(kwargs)
-        template = self.simple_render(template, **keys)
-        return template
+         ''' 
+            render
+            A more complex render that joins global settings with local settings
+
+            :: template :: The template to use
+            :: kwargs :: The local key value pairs to pass to the template
+        '''
+        # Construct the head, body and tail separately
+        rendered_body = self.simple_render(body_template, **kwargs)
+        rendered_head = self.simple_render(header_template, **kwargs)
+        rendered_tail = self.simple_render(tailer_template, **kwargs)
+
+        # Join them
+        rendered_template = rendered_head + rendered_body + rendered_tail
+
+        # Apply any global templating that needs to occur
+        rendered_template = self.global_render(rendered_template)
+
+        # Return the template
+        return rendered_template
+
 ```
-...and here we merge the global renders dictionary and the render dictionary together before passing them to the template. 
+...and here we build the header, tailer and body, join them together and then apply any global replacements we might need 
 
 Lastly let's consider some generic headers we can add to every page on the site (in the case of Drawing Straws, this is the menu bar and the image on every page), and the "tailer" to properly enclose the HTML. This can be more efficiently managed using  proper rendering calls but this template was not built for flexibility so much as for ease of use on a few small sites.
 
 Putting it all together we now get our load and render method:
 ```python
 def load_and_render(self, filename, header="header", tailer="tailer", **kwargs):
-        template = self.load_template(filename)
-        rendered_template = self.render(template, **kwargs)
-        rendered_template = self.load_template(header) + rendered_template
-        rendered_template = rendered_template + self.load_template(tailer)
+        ''' 
+            Loads and renders templates
+
+            :: filename :: Name of the template to load
+            :: header :: Header template to use, swap this out for multiple headers 
+            :: tailer :: Tailer template to use
+            :: kwargs :: Keyword arguments to pass
+        '''
+        body_template = self.load_template(filename)
+        header_template = self.load_template(header)
+        tailer_template = self.load_template(tailer)
+
+        rendered_template = self.render(
+            body_template=body_template, 
+            header_template=header_template, 
+            tailer_template=tailer_template, 
+            **kwargs)
+
         return rendered_template
 ```
 And that's the View class. It's quite a simple template framework compared to some of the more featured ones used in larger scale web development, but it provides the basic features required for this assignment.
