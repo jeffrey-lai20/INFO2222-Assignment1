@@ -1,6 +1,6 @@
 '''
-    This file will handle our typical Bottle requests and responses 
-    You should not have anything beyond basic page loads, handling forms and 
+    This file will handle our typical Bottle requests and responses
+    You should not have anything beyond basic page loads, handling forms and
     maybe some simple program logic
 '''
 
@@ -11,6 +11,9 @@ import model
 #-----------------------------------------------------------------------------
 # Static file paths
 #-----------------------------------------------------------------------------
+
+global login
+login = 0
 
 # Allow image loading
 @route('/img/<picture:path>')
@@ -68,10 +71,11 @@ def serve_js(js):
 def get_index():
     '''
         get_index
-        
+
         Serves the index page
     '''
-    return model.index()
+    global login
+    return model.index(login)
 
 #-----------------------------------------------------------------------------
 
@@ -80,7 +84,7 @@ def get_index():
 def get_login_controller():
     '''
         get_login
-        
+
         Serves the login page
     '''
     return model.login_form()
@@ -92,7 +96,7 @@ def get_login_controller():
 def post_login():
     '''
         post_login
-        
+
         Handles login attempts
         Expects a form containing 'username' and 'password' fields
     '''
@@ -102,6 +106,8 @@ def post_login():
     password = request.forms.get('password')
 
     # Call the appropriate method
+    global login
+    login = 1
     return model.login_check(username, password)
 
 
@@ -111,10 +117,48 @@ def post_login():
 def get_about():
     '''
         get_about
-        
+
         Serves the about page
     '''
     return model.about()
-   
+
 
 #-----------------------------------------------------------------------------
+
+# Display the register page
+@get('/register')
+def get_register_controller():
+    '''
+        get_register
+
+        Serves the register page
+    '''
+    return model.register_form()
+
+#-----------------------------------------------------------------------------
+
+# Attempt the register
+@post('/register')
+def post_register():
+    '''
+        post_register
+
+        Handles login attempts
+        Expects a form containing 'username' and 'password' fields
+    '''
+
+    # Handle the form processing
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    confirm_password = request.forms.get('confirm_password')
+
+    # Call the appropriate method
+    return model.register_check(username, password, confirm_password)
+
+
+#-----------------------------------------------------------------------------
+
+# Subject Homepage
+@get('/info2222')
+def info2222_homepage():
+    return model.info2222_homepage()
