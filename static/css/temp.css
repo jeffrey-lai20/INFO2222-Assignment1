@@ -1,45 +1,28 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
 
 li a:hover {
-    background-color: #111;
+    color: white;
 }
 
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    background-color: #343a40;
+    color: white;
 }
 
-img {
-    padding: 0;
-    display: block;
-    margin: 0 auto;
-    max-height: 45%;
-    max-width: 45%;
+#header-breadscrumb {
+    min-height: 40px;
+    border-bottom: 1px solid white;
 }
 
-html, body, {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
+.dark-text {
+    color:#495057 !important;
+}
+
+/* index.html */
+#course-buttons button.btn {
+    min-width: 260px;
+    min-height: 90px;
+}
+
+#course-buttons .left-side {
+    border-right: 1px solid white;
 }

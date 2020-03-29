@@ -7,6 +7,7 @@
 '''
 import view
 import random
+from bottle import template, redirect
 
 # Initialise our views, all arguments are defaults for the template
 page_view = view.View()
@@ -20,7 +21,7 @@ def index():
         index
         Returns the view for the index
     '''
-    return page_view("index")
+    return redirect("/login")
 
 #-----------------------------------------------------------------------------
 # Login
@@ -31,7 +32,7 @@ def login_form():
         login_form
         Returns the view for the login_form
     '''
-    return page_view("login")
+    return page_view("login", page_title="")
 
 #-----------------------------------------------------------------------------
 
@@ -59,7 +60,7 @@ def login_check(username, password):
         login = False
         
     if login: 
-        return page_view("valid", name=username)
+        return page_view("valid", name=username, page_title="Dashboard")
     else:
         return page_view("invalid", reason=err_str)
     

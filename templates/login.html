@@ -1,14 +1,44 @@
+<!-- <div id="course-buttons" class="container">
+    <div class="">
+        Login with a username and password
+        </p>
+        <p>
+        <form action="/login" method="post">
+            Username: <input name="username" type="text" />
+        </br>
+            Password: <input name="password" type="password" />
+        </br>
+            <input value="Login" type="submit" />
+        </form>
+        </p>        
+    </div>
+</div> -->
 
-Login with a username and password
-</p>
-<p>
-<form action="/login" method="post">
-    Username: <input name="username" type="text" />
-</br>
-    Password: <input name="password" type="password" />
-</br>
-    <input value="Login" type="submit" />
-</form>
-</p>
-</center>
-
+<div class="container mt-2">
+        <div class="row justify-content-center align-items-center text-center p-2" style="margin-top: 55px;">
+            <div class="m-1 col-sm-8 col-md-6 col-lg-4 shadow-sm p-3 mb-5 bg-white border rounded pb-5">
+                <div class="pt-2 pb-2">
+                    <p class="text-center text-uppercase mt-3 dark-text">Login</p>
+                    <form class="form text-center" action="#" method="POST">
+                        <div class="form-group input-group-md">
+                            <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter User Name">
+                            <!--<div class="invalid-feedback">
+                                 Errors in email during form validation, also add .is-invalid class to the input fields
+                            </div> -->
+                        </div>
+                        <div class="form-group input-group-md">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                            <!--<div class="invalid-feedback">
+                                 Errors in password during form validation, also add .is-invalid class to the input fields
+                            </div> -->
+                        </div>
+                        <button class="btn btn-lg btn-block btn-info mt-4" type="submit">
+                            Login
+                   </button>
+                        <!-- <a href="#" class="float-right mt-2">Forgot Password? </a> -->
+                    </form>
+                </div>
+                <a href="/register" class="text-center d-block mt-2">Create an account? </a>
+            </div>
+        </div>
+    </div>

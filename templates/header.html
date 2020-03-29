@@ -1,24 +1,49 @@
-<head>
-<link rel="stylesheet" type="text/css" href="css/temp.css">
-<script src="js/script_head.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-<title>Simple Student Templating Solutions</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="js/script_head.js"></script>
+
+  <title>USYD Support</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap4/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/temp.css">
 </head>
 
-<p>
-<ul>
-  <li><a class="active" href="/home">Home</a></li>
-  <li><a href="/login">Login</a></li>
-  <li><a href="/about">About</a></li>
-</ul>
-</p>
-<center><h2>Simple Student Templating Solutions</h2>
+<body>
 
-
-<h3><i>Because the usability is more important than the back end for now.</i></h3>
-
-<p>
-<img src="img/header.jpg" alt="Some stuff that popped out of tensor flow" height="80%">
-</p>
-
-<p>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/home">USYD Support</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="header-breadscrumb" class="container">
+        ${page_title}
+    </div>
