@@ -206,3 +206,9 @@ def forum_new_thread_post():
 @get('/forum_answer')
 def forum_answer():
     return model.forum_answer()
+
+#-----------------------------------------------------------------------------
+
+@get('/message')
+def message():
+    return model.message()

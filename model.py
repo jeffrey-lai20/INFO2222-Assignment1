@@ -136,3 +136,6 @@ def forum_new_thread_post():
 
 def forum_answer():
     return page_view("forum_answer", page_title = "INFO2222-Forum")
+
+def message():
+    return page_view("message", page_title = "INFO2222-Message")
