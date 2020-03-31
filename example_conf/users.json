@@ -1,0 +1,34 @@
+{
+  "admin": {
+    "hash": "cLzRnzbEwehP6ZzTREh3A4MXJyNo+TV8Hs4//EEbPbiDoo+dmNg22f2RJC282aSwgyWv/O6s3h42qrA6iHx8yfw=",
+    "email_addr": "admin@localhost.local",
+    "role": "admin",
+    "creation_date": "2019-10-28 20:50:26.286723",
+    "desc": "admin test user",
+    "last_login": "2020-03-30 13:04:36.211984"
+  },
+  "staff": {
+    "hash": "cINzYtsLAQNIk60B5mf+rHJuT3ecL9zWjHrA2VY3baXx1mRxEui1XwTbealvxrtOaDrZ0oZr9++nWcqoDgyR8Y8=",
+    "email_addr": "staff@localhost.local",
+    "role": "staff",
+    "creation_date": "2019-10-28 20:50:26.286723",
+    "desc": "test staff",
+    "last_login": "2020-03-30 09:37:08.786156"
+  },
+  "user": {
+    "role": "user",
+    "hash": "cFn0hsmBAadoI0Je8/UOxp7LPWmIFzwfVEwNxvN5u4To4qS2rfJEMG6f/bq90jwUJM0TEpUuovFtTgkmfboCy0I=",
+    "email_addr": "",
+    "desc": "",
+    "creation_date": "2020-03-31 04:07:23.659539",
+    "last_login": "2020-03-31 04:07:23.659547"
+  },
+  "abc": {
+    "role": "user",
+    "hash": "cKmR5NMI5Mz53JEGBByu2jO1GaH6PCk2c5EAuvSHVwuEYR477DzFyUlPmP+WQAhrUKMl98290VOxLpapT87zZLA=",
+    "email_addr": "",
+    "desc": "",
+    "creation_date": "2020-03-31 04:04:53.163661",
+    "last_login": "2020-03-31 04:04:53.163677"
+  }
+}
