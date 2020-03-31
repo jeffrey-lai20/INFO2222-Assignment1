@@ -1,3 +1,4 @@
 bottle
 sqlite3
+bottle-beaker
 bottle-cork

@@ -4,7 +4,7 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file
+from bottle import route, get, post, request, static_file, error
 
 import model
 
@@ -105,6 +105,52 @@ def post_login():
     return model.login_check(username, password)
 
 
+# -----------------------------------------------------------------------------
+
+# Display the register page
+@get('/register')
+def get_register_controller():
+    '''
+        get_register
+
+        Serves the register page
+    '''
+    return model.register_form()
+
+
+# -----------------------------------------------------------------------------
+
+# Attempt the register
+@post('/register')
+def post_register():
+    '''
+        post_register
+
+        Handles Register attempts
+        Expects a form containing 'username' and 'password' fields
+    '''
+
+    # Handle the form processing
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    confirm_password = request.forms.get('confirm_password')
+
+    # Call the appropriate method
+    return model.register_post(username, password, confirm_password)
+
+
+# -----------------------------------------------------------------------------
+
+# Logout
+@get('/logout')
+def get_logout_controller():
+    '''
+        get_login
+
+        Serves the login page
+    '''
+    return model.logout()
+
 #-----------------------------------------------------------------------------
 
 @get('/about')
@@ -115,6 +161,33 @@ def get_about():
         Serves the about page
     '''
     return model.about()
+
+#-----------------------------------------------------------------------------
+
+@get('/invalid')
+def get_invalid():
+    '''
+        get_invalid
+
+        Serves the invalid page
+    '''
+    reason = request.query['reason']
+    return model.invalid(reason)
    
 
 #-----------------------------------------------------------------------------
+
+@get('/dashboard')
+def get_dashboard():
+    '''
+        get_dashboard
+
+        Serves the dashboard page
+    '''
+    return model.dashboard()
+
+#-----------------------------------------------------------------------------
+
+@error(404)
+def error404(error):
+    return model.error404()

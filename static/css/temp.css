@@ -17,6 +17,14 @@ html, body {
     color:#495057 !important;
 }
 
+/*nav*/
+.need_login {
+    display: none;
+}
+.need_anonymous {
+    display: none;
+}
+
 /* index.html */
 #course-buttons button.btn {
     min-width: 260px;
