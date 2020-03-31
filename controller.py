@@ -158,7 +158,51 @@ def post_register():
 
 #-----------------------------------------------------------------------------
 
-# Subject Homepage
+# Subject's Homepage
 @get('/info2222')
 def info2222_homepage():
     return model.info2222_homepage()
+
+
+#-----------------------------------------------------------------------------
+
+# info2222 Resource page
+@get('/resource')
+def info2222_resource():
+    return model.info2222_resource()
+
+#-----------------------------------------------------------------------------
+# info2222 Resouce Submit
+@post('/resource')
+def post_resource():
+    return model.info2222_resource_upload()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum')
+def info2222_forum():
+    return model.info2222_forum()
+
+#-----------------------------------------------------------------------------
+
+@get('/announcement_final')
+def announcement_final():
+    return model.announcement_final()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_new_thread')
+def forum_new_thread():
+    return model.forum_new_thread()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_new_thread_post')
+def forum_new_thread_post():
+    return model.forum_new_thread_post()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_answer')
+def forum_answer():
+    return model.forum_answer()

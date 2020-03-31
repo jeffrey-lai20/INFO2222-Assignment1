@@ -115,3 +115,24 @@ def about_garble():
 
 def info2222_homepage():
     return page_view("info2222", page_title = "INFO2222-Homepage")
+
+def info2222_resource():
+    return page_view("info2222_resource", page_title = "INFO2222-Resource")
+
+def info2222_resource_upload():
+    return page_view("info2222_resource_upload", page_title = "INFO2222-Resource")
+
+def info2222_forum():
+    return page_view("info2222_forum", page_title = "INFO2222-Forum")
+
+def announcement_final():
+    return page_view("announcement_final", page_title = "INFO2222-Forum")
+
+def forum_new_thread():
+    return page_view("forum_new_thread", page_title = "INFO2222-Forum")
+
+def forum_new_thread_post():
+    return page_view("forum_new_thread_post", page_title = "INFO2222-Forum")
+
+def forum_answer():
+    return page_view("forum_answer", page_title = "INFO2222-Forum")
