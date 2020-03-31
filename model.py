@@ -119,7 +119,7 @@ def register_post(username, password, confirm_password):
     except Exception as e:
         reason = 'Caught this server error: ' + repr(e)
 
-    if reason == "":
+    if reason != "":
         return redirect("/invalid?reason=" + reason)
     else:
         return redirect("/login?redirect_msg=Registered%20successfully!%20Please%20Login.")
