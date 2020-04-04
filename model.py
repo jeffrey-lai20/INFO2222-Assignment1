@@ -12,11 +12,16 @@ import bottle
 from beaker.middleware import SessionMiddleware
 from cork import Cork
 from datetime import datetime, timedelta
+import logging
 
 global name
 name = ""
 # Use users.json and roles.json in the local example_conf directory
 aaa = Cork('example_conf', email_sender='federico.ceratto@gmail.com', smtp_url='smtp://smtp.magnet.ie')
+
+LOG_FILENAME = 'example.log'
+logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+
 
 
 # Initialise our views, all arguments are defaults for the template
