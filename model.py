@@ -8,9 +8,34 @@
 import view
 import random
 from bottle import template, redirect
+import bottle
+from beaker.middleware import SessionMiddleware
+from cork import Cork
+from datetime import datetime, timedelta
+
+global name
+name = ""
+# Use users.json and roles.json in the local example_conf directory
+aaa = Cork('example_conf', email_sender='federico.ceratto@gmail.com', smtp_url='smtp://smtp.magnet.ie')
+
 
 # Initialise our views, all arguments are defaults for the template
 page_view = view.View()
+
+#-----------------------------------------------------------------------------
+# Current User Data
+#-----------------------------------------------------------------------------
+def current_user_data():
+    """Show current user role"""
+    session = bottle.request.environ.get('beaker.session')
+    aaa.require(fail_redirect='/login')
+    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role };
+
+def user_is_anonymous():
+    if aaa.user_is_anonymous:
+        return 'True'
+
+    return 'False'
 
 #-----------------------------------------------------------------------------
 # Index
@@ -23,9 +48,7 @@ def index(login):
     '''
     if login == 0:
         return page_view("home", page_title="")
-    else:
-        return page_view("valid", name="admin", page_title="Dashboard")
-    #return redirect("/login")
+    return redirect("/login")
 
 #-----------------------------------------------------------------------------
 # Login
@@ -36,7 +59,11 @@ def login_form():
         login_form
         Returns the view for the login_form
     '''
-    return page_view("login", page_title="")
+    if aaa.user_is_anonymous:
+        return page_view("login", page_title="")
+    else:
+        return redirect("/dashboard")
+
 
 #-----------------------------------------------------------------------------
 
@@ -52,21 +79,11 @@ def login_check(username, password):
         Returns either a view for valid credentials, or a view for invalid credentials
     '''
 
-    # By default assume good creds
-    login = True
+    # check login status and user permission
+    global name
+    name = username
+    aaa.login(username, password, success_redirect='/dashboard', fail_redirect='/invalid?reason=Sorry,%20These%20credentials%20do%20not%20match%20our%20records.%20Please%20Check!')
 
-    if username != "admin": # Wrong Username
-        err_str = "Incorrect Username"
-        login = False
-
-    if password != "password": # Wrong password
-        err_str = "Incorrect Password"
-        login = False
-
-    if login:
-        return page_view("valid", name=username, page_title="Dashboard")
-    else:
-        return page_view("invalid", reason=err_str)
 
 #-----------------------------------------------------------------------------
 # Register
@@ -74,17 +91,67 @@ def login_check(username, password):
 
 def register_form():
     '''
-        login_form
-        Returns the view for the login_form
+        register_form
+        Returns the view for the register_form
     '''
-    return page_view("register", page_title="")
+    if aaa.user_is_anonymous:
+        return page_view("register", page_title="")
+    else:
+        return redirect("/dashboard")
 
 #-----------------------------------------------------------------------------
 
-def register_check(username, password, confirm_password):
-    if password != confirm_password:
-        return redirect("/register")
-    return redirect("/login")
+# Process a register request
+def register_post(username, password, confirm_password):
+
+    reason = ""
+    if username == "" or password == "": # Wrong Username
+        reason = "Username and password could not be empty!"
+    if username in aaa._store.users:
+        reason = "User is already existing."
+    if username != confirm_password:
+        reason = "Password are not matching."
+
+    try:
+        aaa._store.users[username] = {
+            "role": "user",
+            "hash": aaa._hash(username=username, pwd=password),
+            "email_addr": "",
+            "desc": "",
+            "creation_date": str(datetime.utcnow()),
+            "last_login": str(datetime.utcnow()),
+        }
+        aaa._store.save_users()
+    except Exception as e:
+        reason = 'Caught this server error: ' + repr(e)
+
+    if reason != "":
+        return redirect("/invalid?reason=" + reason)
+    else:
+        return redirect("/login?redirect_msg=Registered%20successfully!%20Please%20Login.")
+
+#-----------------------------------------------------------------------------
+# Invalid
+#-----------------------------------------------------------------------------
+def invalid(reason):
+    '''
+        Invalid
+        Returns the view for the invalid page
+    '''
+    return page_view("invalid", reason=reason, page_title="")
+
+
+#-----------------------------------------------------------------------------
+# Dashboard
+#-----------------------------------------------------------------------------
+def dashboard():
+    '''
+        Dashboard
+        Returns the view for the dashboard page
+    '''
+    aaa.require(fail_redirect='/login')
+    return page_view("dashboard", page_title="Dashboard", **current_user_data())
+
 
 #-----------------------------------------------------------------------------
 # About
@@ -95,7 +162,27 @@ def about():
         about
         Returns the view for the about page
     '''
-    return page_view("about", garble=about_garble())
+    return page_view("about", garble=about_garble(), page_title="About")
+
+#-----------------------------------------------------------------------------
+# 404
+#-----------------------------------------------------------------------------
+
+def error404():
+    '''
+        404
+        Returns the view for the 404 page
+    '''
+    return page_view("error404", page_title="404 Not Found")
+
+#-----------------------------------------------------------------------------
+# logout
+#-----------------------------------------------------------------------------
+def logout():
+    '''
+        logout
+    '''
+    aaa.logout(success_redirect='/login')
 
 # Returns a random string each time
 def about_garble():
@@ -110,6 +197,8 @@ def about_garble():
     "ensure the end of the day advancement, a new normal that has evolved from generation X and is on the runway heading towards a streamlined cloud solution.",
     "provide user generated content in real-time will have multiple touchpoints for offshoring."]
     return garble[random.randint(0, len(garble) - 1)]
+
+#-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
 

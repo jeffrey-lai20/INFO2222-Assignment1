@@ -16,6 +16,8 @@
 
 import sys
 from bottle import run
+import bottle
+from beaker.middleware import SessionMiddleware
 
 #-----------------------------------------------------------------------------
 # You may eventually wish to put these in their own directories and then load 
@@ -28,23 +30,46 @@ import view
 import controller
 
 #-----------------------------------------------------------------------------
+# import configurations
+configs = {}
+try:
+    import configs
+    configs = configs.configs
+    default_configs  = False
+except ImportError:
+    default_configs = True
+    pass
 
 # It might be a good idea to move the following settings to a config file and then load them
 # Change this to your IP address or 0.0.0.0 when actually hosting
-host = 'localhost'
+host = 'localhost' if default_configs else configs["web"]["host"]
 
 # Test port, change to the appropriate port to host
-port = 8080
+port = 8080 if default_configs else configs["web"]["port"]
 
 # Turn this off for production
 debug = True
+
+# Turn this off for production
+fast = False if default_configs else configs["app"]["fast"]
 
 def run_server():    
     '''
         run_server
         Runs a bottle server
     '''
-    run(host=host, port=port, debug=debug)
+    app = bottle.app()
+    session_opts = {
+        'session.cookie_expires': True,
+        'session.encrypt_key': 'please use a random key and keep it secret!',
+        'session.httponly': True,
+        'session.timeout': 3600 * 24,  # 1 day
+        'session.type': 'cookie',
+        'session.validate_key': True,
+    }
+
+    app = SessionMiddleware(app, session_opts)
+    run(host=host, port=port, app=app, debug=debug, fast=fast)
 
 #-----------------------------------------------------------------------------
 # Optional SQL support
