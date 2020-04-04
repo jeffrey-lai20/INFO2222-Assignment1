@@ -182,7 +182,7 @@ def logout():
     '''
         logout
     '''
-    aaa.logout(success_redirect='/login')
+    aaa.logout(success_redirect='/home')
 
 # Returns a random string each time
 def about_garble():
@@ -203,28 +203,47 @@ def about_garble():
 #-----------------------------------------------------------------------------
 
 def info2222_homepage():
-    return page_view("info2222", page_title = "INFO2222-Homepage")
+    aaa.require(fail_redirect='/login')
+    return page_view("info2222", page_title = "INFO2222-Homepage" , **current_user_data())
 
 def info2222_resource():
-    return page_view("info2222_resource", page_title = "INFO2222-Resource")
+    aaa.require(fail_redirect='/login')
+    global name
+    if name == "staff":
+        return page_view("info2222_resource_staff", page_title = "INFO2222-Resource", **current_user_data())
+    return page_view("info2222_resource", page_title = "INFO2222-Resource", **current_user_data())
 
 def info2222_resource_upload():
-    return page_view("info2222_resource_upload", page_title = "INFO2222-Resource")
+    aaa.require(fail_redirect='/login')
+    global name
+    if name == "staff":
+        return page_view("info2222_resource_upload_staff", page_title = "INFO2222-Resource", **current_user_data())
+    return page_view("info2222_resource_upload", page_title = "INFO2222-Resource", **current_user_data())
+
+def info2222_resource_delete():
+    aaa.require(fail_redirect='/login')
+    return page_view("info2222_resource_delete", page_title = "INFO2222-Resource", **current_user_data())
 
 def info2222_forum():
-    return page_view("info2222_forum", page_title = "INFO2222-Forum")
+    aaa.require(fail_redirect='/login')
+    return page_view("info2222_forum", page_title = "INFO2222-Forum", **current_user_data())
 
 def announcement_final():
-    return page_view("announcement_final", page_title = "INFO2222-Forum")
+    aaa.require(fail_redirect='/login')
+    return page_view("announcement_final", page_title = "INFO2222-Forum", **current_user_data())
 
 def forum_new_thread():
-    return page_view("forum_new_thread", page_title = "INFO2222-Forum")
+    aaa.require(fail_redirect='/login')
+    return page_view("forum_new_thread", page_title = "INFO2222-Forum", **current_user_data())
 
 def forum_new_thread_post():
-    return page_view("forum_new_thread_post", page_title = "INFO2222-Forum")
+    aaa.require(fail_redirect='/login')
+    return page_view("forum_new_thread_post", page_title = "INFO2222-Forum", **current_user_data())
 
 def forum_answer():
-    return page_view("forum_answer", page_title = "INFO2222-Forum")
+    aaa.require(fail_redirect='/login')
+    return page_view("forum_answer", page_title = "INFO2222-Forum", **current_user_data())
 
 def message():
-    return page_view("message", page_title = "INFO2222-Message")
+    aaa.require(fail_redirect='/login')
+    return page_view("message", page_title = "INFO2222-Message", **current_user_data())
