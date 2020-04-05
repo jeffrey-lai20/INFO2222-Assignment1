@@ -153,6 +153,4 @@ def forum_answer():
     return page_view("forum_answer", user_role=name, page_title = "INFO2222-Forum")
 
 def message():
-    global name
-    if name == "staff":
-        return page_view("message", page_title = "INFO2222-Message")
+    return page_view("message", page_title = "INFO2222-Message")
