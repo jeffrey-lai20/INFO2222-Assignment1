@@ -31,7 +31,7 @@ import controller
 
 # It might be a good idea to move the following settings to a config file and then load them
 # Change this to your IP address or 0.0.0.0 when actually hosting
-host = '0.0.0.0'
+host = 'localhost'
 
 # Test port, change to the appropriate port to host
 port = 8080

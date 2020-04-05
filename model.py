@@ -133,19 +133,26 @@ def info2222_resource_delete():
 
 
 def info2222_forum():
-    return page_view("info2222_forum", page_title = "INFO2222-Forum")
+    global name
+    return page_view("info2222_forum", user_role=name, page_title = "INFO2222-Forum")
 
 def announcement_final():
-    return page_view("announcement_final", page_title = "INFO2222-Forum")
+    global name
+    return page_view("announcement_final",  user_role=name, page_title = "INFO2222-Forum")
 
 def forum_new_thread():
-    return page_view("forum_new_thread", page_title = "INFO2222-Forum")
+    global name
+    return page_view("forum_new_thread", user_role=name, page_title = "INFO2222-Forum")
 
 def forum_new_thread_post():
-    return page_view("forum_new_thread_post", page_title = "INFO2222-Forum")
+    global name
+    return page_view("forum_new_thread_post", user_role=name, page_title = "INFO2222-Forum")
 
 def forum_answer():
-    return page_view("forum_answer", page_title = "INFO2222-Forum")
+    global name
+    return page_view("forum_answer", user_role=name, page_title = "INFO2222-Forum")
 
 def message():
-    return page_view("message", page_title = "INFO2222-Message")
+    global name
+    if name == "staff":
+        return page_view("message", page_title = "INFO2222-Message")
