@@ -4,15 +4,16 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file, error
+from bottle import route, get, post, request, static_file
 
 import model
 
-global login
-login = 0
 #-----------------------------------------------------------------------------
 # Static file paths
 #-----------------------------------------------------------------------------
+
+global login
+login = 0
 
 # Allow image loading
 @route('/img/<picture:path>')
@@ -73,7 +74,7 @@ def get_index():
 
         Serves the index page
     '''
-    global login
+    global login 
     return model.index(login)
 
 #-----------------------------------------------------------------------------
@@ -86,8 +87,6 @@ def get_login_controller():
 
         Serves the login page
     '''
-    global login
-    login = 1
     return model.login_form()
 
 #-----------------------------------------------------------------------------
@@ -107,56 +106,10 @@ def post_login():
     password = request.forms.get('password')
 
     # Call the appropriate method
+    global login
+    login = 1
     return model.login_check(username, password)
 
-
-# -----------------------------------------------------------------------------
-
-# Display the register page
-@get('/register')
-def get_register_controller():
-    '''
-        get_register
-
-        Serves the register page
-    '''
-    return model.register_form()
-
-
-# -----------------------------------------------------------------------------
-
-# Attempt the register
-@post('/register')
-def post_register():
-    '''
-        post_register
-
-        Handles Register attempts
-        Expects a form containing 'username' and 'password' fields
-    '''
-
-    # Handle the form processing
-    username = request.forms.get('username')
-    password = request.forms.get('password')
-    confirm_password = request.forms.get('confirm_password')
-
-    # Call the appropriate method
-    return model.register_post(username, password, confirm_password)
-
-
-# -----------------------------------------------------------------------------
-
-# Logout
-@get('/logout')
-def get_logout_controller():
-    '''
-        get_login
-
-        Serves the login page
-    '''
-    global login
-    login = 0
-    return model.logout()
 
 #-----------------------------------------------------------------------------
 
@@ -169,35 +122,39 @@ def get_about():
     '''
     return model.about()
 
-#-----------------------------------------------------------------------------
-
-@get('/invalid')
-def get_invalid():
-    '''
-        get_invalid
-
-        Serves the invalid page
-    '''
-    reason = request.query['reason']
-    return model.invalid(reason)
-
 
 #-----------------------------------------------------------------------------
 
-@get('/dashboard')
-def get_dashboard():
+# Display the register page
+@get('/register')
+def get_register_controller():
     '''
-        get_dashboard
+        get_register
 
-        Serves the dashboard page
+        Serves the register page
     '''
-    return model.dashboard()
+    return model.register_form()
 
 #-----------------------------------------------------------------------------
 
-@error(404)
-def error404(error):
-    return model.error404()
+# Attempt the register
+@post('/register')
+def post_register():
+    '''
+        post_register
+
+        Handles login attempts
+        Expects a form containing 'username' and 'password' fields
+    '''
+
+    # Handle the form processing
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    confirm_password = request.forms.get('confirm_password')
+
+    # Call the appropriate method
+    return model.register_check(username, password, confirm_password)
+
 
 #-----------------------------------------------------------------------------
 
@@ -221,10 +178,6 @@ def post_resource():
     return model.info2222_resource_upload()
 
 #-----------------------------------------------------------------------------
-
-@get('/info2222_resource_delete')
-def info2222_resource_delete():
-    return model.info2222_resource_delete()
 
 @get('/forum')
 def info2222_forum():

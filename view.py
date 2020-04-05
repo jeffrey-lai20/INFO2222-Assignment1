@@ -47,8 +47,7 @@ class View():
         rendered_template = self.render(
             body_template=body_template, 
             header_template=header_template, 
-            tailer_template=tailer_template,
-            **self.global_renders,
+            tailer_template=tailer_template, 
             **kwargs)
 
         return rendered_template

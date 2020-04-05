@@ -17,26 +17,17 @@ html, body {
     color:#495057 !important;
 }
 
-/*nav*/
-.need_login {
-    display: none;
-}
-.need_anonymous {
-    display: none;
-}
-.need_staff {
-    display: none;
-}
-
 /* index.html */
-#course-buttons button.btn {
+#course-buttons button.btn, #btn_list button.btn {
     min-width: 260px;
     min-height: 90px;
 }
 
-#course-buttons .left-side {
+
+#course-buttons .left-side, #main-container .left-side {
     border-right: 1px solid white;
 }
-#main-container .left-side {
-    border-right: 1px solid white;
+
+.btn-active {
+    background-color: aliceblue;
 }
