@@ -74,7 +74,7 @@ def get_index():
 
         Serves the index page
     '''
-    global login 
+    global login
     return model.index(login)
 
 #-----------------------------------------------------------------------------
@@ -178,6 +178,10 @@ def post_resource():
     return model.info2222_resource_upload()
 
 #-----------------------------------------------------------------------------
+
+@get('/info2222_resource_delete')
+def info2222_resource_delete():
+    return model.info2222_resource_delete()
 
 @get('/forum')
 def info2222_forum():
