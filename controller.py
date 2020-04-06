@@ -259,3 +259,7 @@ def forum_answer():
 @get('/message')
 def message():
     return model.message()
+
+@get('/profile')
+def profile():
+    return model.profile()

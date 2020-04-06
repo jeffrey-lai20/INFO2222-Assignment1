@@ -252,3 +252,7 @@ def forum_answer():
 def message():
     aaa.require(fail_redirect='/login')
     return page_view("message", page_title = "INFO2222-Message", **current_user_data())
+
+def profile():
+    aaa.require(fail_redirect='/login')
+    return page_view("profile", page_title = "Profile", **current_user_data())
