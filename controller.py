@@ -1,6 +1,6 @@
 '''
-    This file will handle our typical Bottle requests and responses 
-    You should not have anything beyond basic page loads, handling forms and 
+    This file will handle our typical Bottle requests and responses
+    You should not have anything beyond basic page loads, handling forms and
     maybe some simple program logic
 '''
 
@@ -8,6 +8,8 @@ from bottle import route, get, post, request, static_file, error
 
 import model
 
+global login
+login = 0
 #-----------------------------------------------------------------------------
 # Static file paths
 #-----------------------------------------------------------------------------
@@ -68,10 +70,11 @@ def serve_js(js):
 def get_index():
     '''
         get_index
-        
+
         Serves the index page
     '''
-    return model.index()
+    global login
+    return model.index(login)
 
 #-----------------------------------------------------------------------------
 
@@ -80,9 +83,11 @@ def get_index():
 def get_login_controller():
     '''
         get_login
-        
+
         Serves the login page
     '''
+    global login
+    login = 1
     return model.login_form()
 
 #-----------------------------------------------------------------------------
@@ -92,7 +97,7 @@ def get_login_controller():
 def post_login():
     '''
         post_login
-        
+
         Handles login attempts
         Expects a form containing 'username' and 'password' fields
     '''
@@ -149,6 +154,8 @@ def get_logout_controller():
 
         Serves the login page
     '''
+    global login
+    login = 0
     return model.logout()
 
 #-----------------------------------------------------------------------------
@@ -157,7 +164,7 @@ def get_logout_controller():
 def get_about():
     '''
         get_about
-        
+
         Serves the about page
     '''
     return model.about()
@@ -173,7 +180,7 @@ def get_invalid():
     '''
     reason = request.query['reason']
     return model.invalid(reason)
-   
+
 
 #-----------------------------------------------------------------------------
 
@@ -191,3 +198,68 @@ def get_dashboard():
 @error(404)
 def error404(error):
     return model.error404()
+
+#-----------------------------------------------------------------------------
+
+# Subject's Homepage
+@get('/info2222')
+def info2222_homepage():
+    return model.info2222_homepage()
+
+
+#-----------------------------------------------------------------------------
+
+# info2222 Resource page
+@get('/resource')
+def info2222_resource():
+    return model.info2222_resource()
+
+#-----------------------------------------------------------------------------
+# info2222 Resouce Submit
+@post('/resource')
+def post_resource():
+    return model.info2222_resource_upload()
+
+#-----------------------------------------------------------------------------
+
+@get('/info2222_resource_delete')
+def info2222_resource_delete():
+    return model.info2222_resource_delete()
+
+@get('/forum')
+def info2222_forum():
+    return model.info2222_forum()
+
+#-----------------------------------------------------------------------------
+
+@get('/announcement_final')
+def announcement_final():
+    return model.announcement_final()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_new_thread')
+def forum_new_thread():
+    return model.forum_new_thread()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_new_thread_post')
+def forum_new_thread_post():
+    return model.forum_new_thread_post()
+
+#-----------------------------------------------------------------------------
+
+@get('/forum_answer')
+def forum_answer():
+    return model.forum_answer()
+
+#-----------------------------------------------------------------------------
+
+@get('/message')
+def message():
+    return model.message()
+
+@get('/profile')
+def profile():
+    return model.profile()
