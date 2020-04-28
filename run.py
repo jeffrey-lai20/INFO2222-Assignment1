@@ -16,8 +16,12 @@
 
 import sys
 from bottle import run
+from bottle import route, get, post, request, static_file, error, Bottle, template
+import model
+import argparse
 import bottle
 from beaker.middleware import SessionMiddleware
+import os
 
 #-----------------------------------------------------------------------------
 # You may eventually wish to put these in their own directories and then load
@@ -53,12 +57,52 @@ debug = True
 # Turn this off for production
 fast = False if default_configs else configs["app"]["fast"]
 
+
+################################################################################################################
+#Resource part
+@get('/resource')
+def do_index():
+    """List all uploaded files"""
+    model.aaa.require(fail_redirect='/login')
+    root = '%s/' % bottle.request.environ.get('SCRIPT_NAME')
+    return bottle.template('templates/resource.html', files=os.listdir(app.config['file_upload.dir']), root=root, **model.current_user_data())
+    #return model.page_view('resource', page_title="Resource", files=os.listdir(app.config['file_upload.dir']), root=root)
+
+@get('/resource/download/<filename>')
+def do_download(filename):
+    """Return a static file from the files directory"""
+    return bottle.static_file(filename, root=app.config['file_upload.dir'])
+
+@post('/resource/upload')
+def do_upload():
+    """Upload a file if it's missing"""
+    upload = bottle.request.files.get('upload') # pylint: disable-msg=E1101
+    try:
+        upload.save(app.config['file_upload.dir'])
+    except IOError as io_error:
+        return bottle.HTTPError(409, io_error)
+
+    root = '%s/' % bottle.request.environ.get('SCRIPT_NAME')
+    bottle.redirect('/resource')
+
+@get('/resource/delete/<filename>')
+def do_delete(filename):
+    os.remove("files/" + filename)
+    bottle.redirect('/resource')
+
+def create_files_dir(path):
+    """Create a directory to upload files to if it's missing."""
+    if not os.path.isdir(path):
+        os.mkdir(path)
+
+################################################################################################################
+app = bottle.app()
 def run_server():
     '''
         run_server
         Runs a bottle server
     '''
-    app = bottle.app()
+    # app = bottle.app()
     session_opts = {
         'session.cookie_expires': True,
         'session.encrypt_key': 'please use a random key and keep it secret!',
@@ -68,8 +112,24 @@ def run_server():
         'session.validate_key': True,
     }
 
-    app = SessionMiddleware(app, session_opts)
-    run(host=host, port=port, app=app, debug=debug, fast=fast)
+################################################################################################################
+
+    bottle.route('/resource', 'GET', do_index)
+    bottle.route('/resource/download/<filename>', 'GET', do_download)
+    bottle.route('/resource/upload', 'POST', do_upload)
+
+    # Change working directory so relative paths (and template lookup) work
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    app.config.setdefault('file_upload.dir', 'files')
+
+    if os.path.exists('file_upload.conf'):
+        app.config.load_config('file_upload.conf')
+    create_files_dir(app.config['file_upload.dir'])
+
+################################################################################################################
+
+    appp = SessionMiddleware(app, session_opts)
+    run(host=host, port=port, app=appp, debug=debug, fast=fast)
 
 #-----------------------------------------------------------------------------
 # Optional SQL support
