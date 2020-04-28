@@ -20,7 +20,7 @@ import bottle
 from beaker.middleware import SessionMiddleware
 
 #-----------------------------------------------------------------------------
-# You may eventually wish to put these in their own directories and then load 
+# You may eventually wish to put these in their own directories and then load
 # Each file separately
 
 # For the template, we will keep them together
@@ -53,7 +53,7 @@ debug = True
 # Turn this off for production
 fast = False if default_configs else configs["app"]["fast"]
 
-def run_server():    
+def run_server():
     '''
         run_server
         Runs a bottle server
@@ -73,7 +73,7 @@ def run_server():
 
 #-----------------------------------------------------------------------------
 # Optional SQL support
-# Comment out the current manage_db function, and 
+# Comment out the current manage_db function, and
 # uncomment the following one to load an SQLite3 database
 
 def manage_db():
@@ -84,7 +84,7 @@ def manage_db():
 
 """
 import sql
-    
+
 def manage_db():
     '''
         manage_db
