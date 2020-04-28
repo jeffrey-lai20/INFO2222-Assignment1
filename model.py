@@ -7,7 +7,7 @@
 '''
 import view
 import random
-from bottle import template, redirect
+from bottle import template, redirect, static_file
 import bottle
 from beaker.middleware import SessionMiddleware
 from cork import Cork
@@ -210,24 +210,6 @@ def about_garble():
 def info2222_homepage():
     aaa.require(fail_redirect='/login')
     return page_view("info2222", page_title = "INFO2222-Homepage" , **current_user_data())
-
-def info2222_resource():
-    aaa.require(fail_redirect='/login')
-    global name
-    if name == "staff":
-        return page_view("info2222_resource_staff", page_title = "INFO2222-Resource", **current_user_data())
-    return page_view("info2222_resource", page_title = "INFO2222-Resource", **current_user_data())
-
-def info2222_resource_upload():
-    aaa.require(fail_redirect='/login')
-    global name
-    if name == "staff":
-        return page_view("info2222_resource_upload_staff", page_title = "INFO2222-Resource", **current_user_data())
-    return page_view("info2222_resource_upload", page_title = "INFO2222-Resource", **current_user_data())
-
-def info2222_resource_delete():
-    aaa.require(fail_redirect='/login')
-    return page_view("info2222_resource_delete", page_title = "INFO2222-Resource", **current_user_data())
 
 def info2222_forum():
     aaa.require(fail_redirect='/login')

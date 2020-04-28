@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="js/script_head.js"></script>
+
+  <title>USYD Support</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap4/bootstrap.min.css">
+  <!-- Noty CSS -->
+  <link href="css/noty.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/temp.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/home">USYD Support</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+              <a class="nav-link" href="/resource">Resource</a>
+            </li>
+            <pre class="tab">       </pre>
+              <a class="nav-link" href="/forum">Forum</a>
+            </li>
+            <pre class="tab">       </pre>
+              <a class="nav-link" href="/message">Message</a>
+            </li>
+            <pre class="tab">                     </pre>
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="header-breadscrumb" class="container">
+        Resource
+    </div>
+
+<div class="container">
+  <br>
+  <center><h5 style = "color:#85C1E9">Study Material Sharing Center</h5></center>
+    <div class="row">
+        <div class="col-lg-12 col-md-6">
+          <br>
+          %if files:
+            <ul>
+          %   for file in sorted(files):
+          <center>
+              <a href="{{root}}resource/download/{{file}}" download><button class="btn" style="height:50px; width:70%">{{file}}</button></a>&emsp;<a href="{{root}}resource/delete/{{file}}">delete</a></li>
+              <br><br>
+            </center>
+          %   end
+            </ul>
+          %else:
+
+            <center><p>There are currently no uploaded files... <br><br>Upload the first one by clicking upload!</p></center>
+          %end
+          <form action="{{root}}resource/upload" method="post" enctype="multipart/form-data">
+            <center><br><label>Select a file:
+              <input type="file" name="upload" required="required"/>
+            </label>
+            <input type="submit" value="Upload" />
+          </form>
+        </center>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="d-none" id="user_data" data-user_role="${user_role}" data-user_email="${user_email}"></div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap4/bootstrap.min.js"></script>
+<script src="js/noty.min.js" type="text/javascript"></script>
+<script src="js/script_tail.js"></script>
+
+</body>
+</html>

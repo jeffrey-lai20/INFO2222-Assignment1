@@ -4,9 +4,11 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file, error
-
+from bottle import route, get, post, request, static_file, error, Bottle, template
+import os
+import argparse
 import model
+import bottle
 
 global login
 login = 0
@@ -206,25 +208,8 @@ def error404(error):
 def info2222_homepage():
     return model.info2222_homepage()
 
-
-#-----------------------------------------------------------------------------
-
-# info2222 Resource page
-@get('/resource')
-def info2222_resource():
-    return model.info2222_resource()
-
-#-----------------------------------------------------------------------------
-# info2222 Resouce Submit
-@post('/resource')
-def post_resource():
-    return model.info2222_resource_upload()
-
-#-----------------------------------------------------------------------------
-
-@get('/info2222_resource_delete')
-def info2222_resource_delete():
-    return model.info2222_resource_delete()
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 @get('/forum')
 def info2222_forum():
@@ -263,3 +248,5 @@ def message():
 @get('/profile')
 def profile():
     return model.profile()
+
+##########################################################################################
