@@ -371,4 +371,10 @@ def promote(user_name):
     model.all_user_data()['users'][user_name]['role'] = 'staff'
     return bottle.redirect('/manage_user')
 
+@get('/profile/reset_password')
+def reset_password():
+    model.aaa.require(fail_redirect='/login')
+    return
+
+
 ##########################################################################################
