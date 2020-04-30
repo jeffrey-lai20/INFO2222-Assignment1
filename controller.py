@@ -351,4 +351,24 @@ def message():
 def profile():
     return model.profile()
 
+@get('/manage_user')
+def manage_user():
+    return model.manage_user()
+
+@get('/delete/<user_name>')
+def delete_user(user_name):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return error404()
+    del model.all_user_data()['users'][user_name]
+    return bottle.redirect('/manage_user')
+
+@get('/promote/<user_name>')
+def promote(user_name):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return error404()
+    model.all_user_data()['users'][user_name]['role'] = 'staff'
+    return bottle.redirect('/manage_user')
+
 ##########################################################################################

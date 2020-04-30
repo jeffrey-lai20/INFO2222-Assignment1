@@ -36,6 +36,11 @@ def current_user_data():
     aaa.require(fail_redirect='/login')
     return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role, 'username':aaa.current_user.username };
 
+def all_user_data():
+    session = bottle.request.environ.get('beaker.session')
+    aaa.require(fail_redirect='/login')
+    return { 'users': aaa._store.users};
+
 def user_is_anonymous():
     if aaa.user_is_anonymous:
         return 'True'
@@ -114,7 +119,7 @@ def register_post(username, password, confirm_password):
         reason = "Username and password could not be empty!"
     if username in aaa._store.users:
         reason = "User is already existing."
-    if username != confirm_password:
+    if password != confirm_password:
         reason = "Password are not matching."
 
     try:
@@ -242,3 +247,9 @@ def profile():
     aaa.require(fail_redirect='/login')
     return template("templates/profile.html", **current_user_data())
     #return page_view("profile", page_title = "Profile", **current_user_data())
+def manage_user():
+    aaa.require(fail_redirect='/login')
+    if aaa.current_user.role=='user':
+        return error404()
+    else:
+        return template("templates/manage_user.html", **all_user_data())
