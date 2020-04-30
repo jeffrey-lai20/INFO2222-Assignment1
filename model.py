@@ -34,7 +34,7 @@ def current_user_data():
     """Show current user role"""
     session = bottle.request.environ.get('beaker.session')
     aaa.require(fail_redirect='/login')
-    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role, 'username':aaa.current_user.username };
+    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role, 'username':aaa.current_user.username};
 
 def all_user_data():
     session = bottle.request.environ.get('beaker.session')
@@ -122,6 +122,9 @@ def register_post(username, password, confirm_password):
     if password != confirm_password:
         reason = "Password are not matching."
 
+    if reason != "":
+        return redirect("/invalid?reason=" + reason)
+
     try:
         aaa._store.users[username] = {
             "role": "user",
@@ -131,13 +134,12 @@ def register_post(username, password, confirm_password):
             "desc": "",
             "creation_date": str(datetime.utcnow()),
             "last_login": str(datetime.utcnow()),
+            "muted" : 0,
         }
         aaa._store.save_users()
     except Exception as e:
         reason = 'Caught this server error: ' + repr(e)
 
-    if reason != "":
-        return redirect("/invalid?reason=" + reason)
     else:
         return redirect("/login?redirect_msg=Registered%20successfully!%20Please%20Login.")
 

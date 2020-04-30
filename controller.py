@@ -230,7 +230,7 @@ def get_forum(thread_name = None):
         threads.append(row)
     threads.reverse()
     conn.close()
-    return model.template("templates/forum.html", threads = threads, thread_name = thread_name, **model.current_user_data())
+    return model.template("templates/forum.html", threads = threads, thread_name = thread_name, **model.current_user_data(), muted = model.all_user_data()['users'][model.current_user_data()['username']]['muted'])
 
 @get('/forum/new')
 def forum_new(thread_name = None):
@@ -243,7 +243,7 @@ def forum_new(thread_name = None):
         threads.append(row)
     threads.reverse()
     conn.close()
-    return model.template("templates/forum_new.html", threads = threads, thread_name = thread_name)
+    return model.template("templates/forum_new.html", threads = threads, thread_name = thread_name, muted = model.all_user_data()['users'][model.current_user_data()['username']]['muted'])
 
 @post('/forum/new')
 def receive_forum_new(thread_name = None):
@@ -359,7 +359,7 @@ def manage_user():
 def delete_user(user_name):
     model.aaa.require(fail_redirect='/login')
     if model.aaa.current_user.role=='user':
-        return error404()
+        return model.error404()
     del model.all_user_data()['users'][user_name]
     return bottle.redirect('/manage_user')
 
@@ -367,7 +367,7 @@ def delete_user(user_name):
 def promote(user_name):
     model.aaa.require(fail_redirect='/login')
     if model.aaa.current_user.role=='user':
-        return error404()
+        return model.error404()
     model.all_user_data()['users'][user_name]['role'] = 'staff'
     return bottle.redirect('/manage_user')
 
@@ -376,5 +376,20 @@ def reset_password():
     model.aaa.require(fail_redirect='/login')
     return
 
+@get('/mute/<user>')
+def mute_user(user):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    model.all_user_data()['users'][user]['muted'] = 1
+    return bottle.redirect('/manage_user')
+
+@get('/unmute/<user>')
+def unmute_user(user):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    model.all_user_data()['users'][user]['muted'] = 0
+    return bottle.redirect('/manage_user')
 
 ##########################################################################################

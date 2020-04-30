@@ -88,12 +88,16 @@
 
     <div class="col-lg-8 col-md-12 not_in_new_message" style="border-right: 1px solid white;">
         <br>
-        <form action = "/forum/new" method="POST">
-        <textarea id="topic" name="topic" style = "background-color:#E0FFFF;" rows="1" cols="89" placeholder="Your topic:"></textarea>
-        <p></p>
-        <textarea id="content" name="content" style = "background-color:#E0FFFF;" rows="10" cols="89" placeholder="Your content:"></textarea>
-        <input value = "Post" type="submit"/>
-        </form>
+        %if muted == 0:
+          <form action = "/forum/new" method="POST">
+          <textarea id="topic" name="topic" style = "background-color:#E0FFFF;" rows="1" cols="89" placeholder="Your topic:"></textarea>
+          <p></p>
+          <textarea id="content" name="content" style = "background-color:#E0FFFF;" rows="10" cols="89" placeholder="Your content:"></textarea>
+          <input value = "Post" type="submit"/>
+          </form>
+        %else:
+          <textarea style = "background-color:#E0FFFF;" rows="4" cols="89">You have been muted, please contact staff!</textarea>
+        %end
     </div>
   </div>
 </div>

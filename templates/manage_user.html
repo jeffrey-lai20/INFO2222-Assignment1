@@ -109,6 +109,25 @@
           <!-- %end -->
       %end
       </div>
+
+      <div class="col-lg-1 col-md-6" id="btn_list">
+          <h6 style = "color:#85C1E9">&emsp;</h6>
+      %for user in sorted(users):
+        <!-- <a href = ''>mute</a> -->
+        <!-- %if {{users[user]['role']}} == 'user': -->
+        %if users[user]['role'] == 'user':
+          %if users[user]['muted'] == 0:
+            <p><a href = '/mute/{{user}}'>mute</a></p>
+          %else:
+            <p><a href = '/unmute/{{user}}'>unmute</a></p>
+          %end
+        %else:
+          <p>&emsp;</p>
+        %end
+          <!-- %end -->
+      %end
+      </div>
+
       </div>
     </div>
 

@@ -119,11 +119,18 @@
               <hr style = "background-color:white">
           %end
         %end
-        <form action = "/forum/read/{{thread_name}}" method="POST">
-        <textarea id="reply" name="reply" style = "background-color:#E0FFFF;" rows="4" cols="89" placeholder="Your reply:"></textarea>
-        <input value = "reply" type="submit"/>
-        </form>
+
+        %if muted == 0:
+          <form action = "/forum/read/{{thread_name}}" method="POST">
+          <textarea id="reply" name="reply" style = "background-color:#E0FFFF;" rows="4" cols="89" placeholder="Your reply:"></textarea>
+          <input value = "reply" type="submit"/>
+          </form>
+        %else:
+          <textarea style = "background-color:#E0FFFF;" rows="4" cols="89">You have been muted, please contact staff!</textarea>
+        %end
       %end
+
+
     </div>
   </div>
 </div>
