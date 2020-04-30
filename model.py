@@ -34,7 +34,7 @@ def current_user_data():
     """Show current user role"""
     session = bottle.request.environ.get('beaker.session')
     aaa.require(fail_redirect='/login')
-    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role };
+    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role, 'username':aaa.current_user.username };
 
 def user_is_anonymous():
     if aaa.user_is_anonymous:
@@ -120,6 +120,7 @@ def register_post(username, password, confirm_password):
     try:
         aaa._store.users[username] = {
             "role": "user",
+            "username": username,
             "hash": aaa._hash(username=username, pwd=password),
             "email_addr": "",
             "desc": "",
@@ -178,7 +179,8 @@ def error404():
         404
         Returns the view for the 404 page
     '''
-    return page_view("error404", page_title="404 Not Found")
+    # return page_view("error404", page_title="404 Not Found")
+    return template("templates/error404")
 
 #-----------------------------------------------------------------------------
 # logout
@@ -206,6 +208,7 @@ def about_garble():
 #-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
+
 
 def info2222_homepage():
     aaa.require(fail_redirect='/login')
@@ -237,4 +240,5 @@ def message():
 
 def profile():
     aaa.require(fail_redirect='/login')
-    return page_view("profile", page_title = "Profile", **current_user_data())
+    return template("templates/profile.html", **current_user_data())
+    #return page_view("profile", page_title = "Profile", **current_user_data())

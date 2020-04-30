@@ -46,7 +46,7 @@ except ImportError:
 
 # It might be a good idea to move the following settings to a config file and then load them
 # Change this to your IP address or 0.0.0.0 when actually hosting
-host = 'localhost' if default_configs else configs["web"]["host"]
+host = '0.0.0.0' if default_configs else configs["web"]["host"]
 
 # Test port, change to the appropriate port to host
 port = 8080 if default_configs else configs["web"]["port"]
@@ -70,11 +70,13 @@ def do_index():
 
 @get('/resource/download/<filename>')
 def do_download(filename):
+    model.aaa.require(fail_redirect='/login')
     """Return a static file from the files directory"""
     return bottle.static_file(filename, root=app.config['file_upload.dir'])
 
 @post('/resource/upload')
 def do_upload():
+    model.aaa.require(fail_redirect='/login')
     """Upload a file if it's missing"""
     upload = bottle.request.files.get('upload') # pylint: disable-msg=E1101
     try:
@@ -87,6 +89,9 @@ def do_upload():
 
 @get('/resource/delete/<filename>')
 def do_delete(filename):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role == "user":
+        return
     os.remove("files/" + filename)
     bottle.redirect('/resource')
 
@@ -114,9 +119,9 @@ def run_server():
 
 ################################################################################################################
 
-    bottle.route('/resource', 'GET', do_index)
-    bottle.route('/resource/download/<filename>', 'GET', do_download)
-    bottle.route('/resource/upload', 'POST', do_upload)
+    # bottle.route('/resource', 'GET', do_index)
+    # bottle.route('/resource/download/<filename>', 'GET', do_download)
+    # bottle.route('/resource/upload', 'POST', do_upload)
 
     # Change working directory so relative paths (and template lookup) work
     os.chdir(os.path.dirname(os.path.abspath(__file__)))

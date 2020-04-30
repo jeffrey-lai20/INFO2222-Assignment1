@@ -4,11 +4,12 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file, error, Bottle, template
+from bottle import route, get, post, request, static_file, error, Bottle, template, redirect
 import os
 import argparse
 import model
 import bottle
+import sqlite3
 
 global login
 login = 0
@@ -211,9 +212,110 @@ def info2222_homepage():
 # -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 
+# @get('/forum')
+# def info2222_forum():
+#     return model.info2222_forum()
+
+
+
+#list all Threads
 @get('/forum')
-def info2222_forum():
-    return model.info2222_forum()
+def get_forum(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    threads = []
+    cursor = c.execute("SELECT name, role, topic, reply, content, id, reply_id from FORUM")
+    for row in cursor:
+        threads.append(row)
+    threads.reverse()
+    conn.close()
+    return model.template("templates/forum.html", threads = threads, thread_name = thread_name, **model.current_user_data())
+
+@get('/forum/new')
+def forum_new(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    threads = []
+    cursor = c.execute("SELECT name, role, topic, reply, content, id, reply_id from FORUM")
+    for row in cursor:
+        threads.append(row)
+    threads.reverse()
+    conn.close()
+    return model.template("templates/forum_new.html", threads = threads, thread_name = thread_name)
+
+@post('/forum/new')
+def receive_forum_new(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    thread_name = request.forms.get('topic')
+    content = request.forms.get('content')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+
+
+#     c.execute("SELECT count(*) FROM FORUM WHERE topic='"+thread_name+"'")
+#
+# #if the count is 1, then table exists
+#     if c.fetchone()[0]>=1 :
+#     	c.execute("UPDATE FORUM set content = '"+content+"' where topic='"+thread_name+"' and reply = 'no'")
+#     else :
+    c.execute("INSERT INTO FORUM (name,role,topic,reply,content) \
+      VALUES ('"+model.aaa.current_user.username+"', '"+model.aaa.current_user.role+"', '"+thread_name+"', 'no', '"+content+"')")
+    conn.commit()
+    conn.close()
+    return get_forum()
+
+@get('/forum/read/<thread_name>')
+def get_forum_by_name(thread_name):
+    model.aaa.require(fail_redirect='/login')
+    return get_forum(thread_name)
+
+@post('/forum/read/<thread_name>')
+def get_reply(thread_name):
+    model.aaa.require(fail_redirect='/login')
+    reply = request.forms.get('reply')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO FORUM (name,role,topic,reply,content,id) \
+          VALUES ('"+model.aaa.current_user.username+"', '"+model.aaa.current_user.role+"', '"+"reply"+"', 'yes', '"+reply+"', '"+thread_name+"')")
+    conn.commit()
+    conn.close()
+    return get_forum(thread_name)
+
+@get('/forum/delete/<info>')
+def get_delete(info):
+    model.aaa.require(fail_redirect='/login')
+    reply = request.forms.get('reply')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    if len(info.split('_y_')) == 2:
+        info = info.split('_y_')
+        c.execute("DELETE FROM FORUM WHERE reply_id = '"+info[0]+"'")
+        conn.commit()
+        conn.close()
+        return get_forum(info[1])
+    elif len(info.split('_n_')) == 2:
+        # print(info)
+        info = info.split('_n_')
+        # print(info)
+        # c.execute("DELETE FROM FORUM WHERE topic = '"+info[0]+"' and reply = 'no'")
+        # c.execute("DELETE FROM FORUM WHERE topic = '"+info[0]+"' and reply = 'yes'")
+        c.execute("DELETE FROM FORUM WHERE id = '"+info[0]+"'")
+        conn.commit()
+        conn.close()
+        return get_forum(None)
+
+
+    # model.aaa.require(fail_redirect='/login')
+    # conn = sqlite3.connect('forum.db')
+    # c = conn.cursor()
+    # threads = []
+    # cursor = c.execute("SELECT name, role, topic, content  from FORUM")
+    # for row in cursor:
+    #     threads.append(row)
+    # threads.reverse()
+    # return model.template("templates/forum.html", threads = threads, thread_name = thread_name)
 
 #-----------------------------------------------------------------------------
 
