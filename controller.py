@@ -4,7 +4,7 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file, error, Bottle, template, redirect
+from bottle import route, get, post, request, static_file, error, Bottle, template, redirect, delete
 import os
 import argparse
 import model
@@ -204,19 +204,6 @@ def error404(error):
 
 #-----------------------------------------------------------------------------
 
-# Subject's Homepage
-@get('/info2222')
-def info2222_homepage():
-    return model.info2222_homepage()
-
-# -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
-
-# @get('/forum')
-# def info2222_forum():
-#     return model.info2222_forum()
-
-
 
 #list all Threads
 @get('/forum')
@@ -306,47 +293,6 @@ def get_delete(info):
         conn.close()
         return get_forum(None)
 
-
-    # model.aaa.require(fail_redirect='/login')
-    # conn = sqlite3.connect('forum.db')
-    # c = conn.cursor()
-    # threads = []
-    # cursor = c.execute("SELECT name, role, topic, content  from FORUM")
-    # for row in cursor:
-    #     threads.append(row)
-    # threads.reverse()
-    # return model.template("templates/forum.html", threads = threads, thread_name = thread_name)
-
-#-----------------------------------------------------------------------------
-
-@get('/announcement_final')
-def announcement_final():
-    return model.announcement_final()
-
-#-----------------------------------------------------------------------------
-
-@get('/forum_new_thread')
-def forum_new_thread():
-    return model.forum_new_thread()
-
-#-----------------------------------------------------------------------------
-
-@get('/forum_new_thread_post')
-def forum_new_thread_post():
-    return model.forum_new_thread_post()
-
-#-----------------------------------------------------------------------------
-
-@get('/forum_answer')
-def forum_answer():
-    return model.forum_answer()
-
-#-----------------------------------------------------------------------------
-
-@get('/message')
-def message():
-    return model.message()
-
 @get('/profile')
 def profile():
     return model.profile()
@@ -393,3 +339,31 @@ def unmute_user(user):
     return bottle.redirect('/manage_user')
 
 ##########################################################################################
+
+@get('/message')
+def message(db):
+    return model.message(db)
+
+@post('/message')
+def message_post(db):
+    return model.message_post(db)
+
+@delete('/message/<message_id:int>')
+def message_delete(message_id, db):
+    return model.message_delete(message_id, db)
+
+@post('/message_reply')
+def message_reply(db):
+    return model.message_reply_post(db)
+
+@get('/reset_password')
+def reset_password():
+    return model.reset_password()
+
+@post('/reset_password')
+def reset_password_post():
+    # Handle the form processing
+    old_password = request.forms.get('old_password')
+    new_password = request.forms.get('new_password')
+    confirm_password = request.forms.get('confirm_password')
+    return model.reset_password_post(old_password, new_password, confirm_password)

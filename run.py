@@ -17,6 +17,7 @@
 import sys
 from bottle import run
 from bottle import route, get, post, request, static_file, error, Bottle, template
+import bottle.ext.sqlite
 import model
 import argparse
 import bottle
@@ -108,6 +109,12 @@ def run_server():
         Runs a bottle server
     '''
     # app = bottle.app()
+
+    # add bottle-sqlite plugin
+    # link to sqlite3 database
+    plugin=bottle.ext.sqlite.Plugin(dbfile='./database/info2222.db')
+    app.install(plugin)
+
     session_opts = {
         'session.cookie_expires': True,
         'session.encrypt_key': 'please use a random key and keep it secret!',

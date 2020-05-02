@@ -62,7 +62,7 @@
           <br>
           %if files:
             <ul>
-          %   for file in sorted(files): 
+          %   for file in sorted(files):
           <center>
               <a href="{{root}}resource/download/{{file}}" download><button class="btn" style="height:50px; width:70%">{{file}}</button></a>
               %if user_role != "user":

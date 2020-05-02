@@ -54,8 +54,9 @@ $(function () {
         }).show();
     }
 
-        function toggleNewMessagePage(switchTo = 'open') {
+    function toggleNewMessagePage(switchTo = 'open') {
         let in_new_messages = $(".in_new_message");
+        // console.log(in_new_messages)
         let not_in_new_messages = $(".not_in_new_message");
         if (switchTo == 'open') {
             not_in_new_messages.addClass("d-none");
@@ -139,4 +140,139 @@ $(function () {
         });
     }
 
+    //    Messages page
+    window.showMessageContent = function (msg_id) {
+        let cur_msg;
+        cur_msg = $.grep(from_me_messages, function(e){ return e.id == msg_id; });
+        if (cur_msg.length  === 0)
+            cur_msg = $.grep(to_me_messages, function(e){ return e.id == msg_id; });
+        if (cur_msg.length === 0)
+            return;
+        cur_msg = cur_msg[0];
+        // console.log(cur_msg);
+        $('#msg_title').text(parseHtmlEntities(cur_msg.subject));
+        $('#msg_from_user').text(parseHtmlEntities(cur_msg.from_user)+' at '+parseHtmlEntities(cur_msg.create_at));
+        $('#msg_body').text(parseHtmlEntities(cur_msg.body));
+
+        $("#replies_wrapper").empty();
+        if (Array.isArray(replies[msg_id])) {
+            replies[msg_id].forEach(function (reply) {
+                let card_string = '                <div class="card mb-2">\n' +
+                    '                  <div class="card-body p-2" style="color: #212529;">\n' +
+                    '                      <strong>From: '+reply.from_user+' at '+reply.create_at+'</strong>\n' +
+                    '                      <p>'+reply.body+'</p>\n' +
+                    '                  </div>\n' +
+                    '                </div>';
+                $("#replies_wrapper").append(card_string);
+            });
+        }
+        current_message = msg_id;
+        toggleNewMessagePage("close");
+    }
+
+    var current_message;
+    // "add new" button
+    const new_message_button = '<button id="new_message_btn" type="button" class="btn btn-info my-2 my-md-3" style="width: 100%">New Message</button>';
+    $("#btn_list").prepend(new_message_button);
+
+    $("#new_message_btn").on("click", function () {
+        toggleNewMessagePage("open");
+    });
+
+    function show_message_btns(messages, selector) {
+        try {
+            messages.forEach(function (message) {
+                // console.log(message);
+                // button
+                const select_button = '<div class="row pb-1"><div class="col-md-12">' +
+                    '                <a href="javascript:void(0)" id="message_btn_' + message.id + '" class="message_btn" data-msg_id="' + message.id + '">\n' +
+                    '                    <button type="button" class="btn-active" onclick="showMessageContent(' + message.id + ')" style="width: 100%; height: 50px"\n' +
+                    '                    >' + message['subject'] + '</button></a>\n' +
+                    '            </div></div>';
+                $(selector).append(select_button);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    function clearContent(selectors) {
+        selectors.forEach(selector => {
+            $(selector).text("");
+        });
+    }
+
+    if (typeof from_me_messages !== "undefined") {
+        show_message_btns(from_me_messages, "#from_me_message_btns");
+    }
+
+    if (typeof to_me_messages !== "undefined") {
+        show_message_btns(to_me_messages, "#to_me_message_btns");
+    }
+
+    // standard post function
+    const submitFormHandler = function (url, formData, type="POST") {
+        const success = function (response) {
+            // console.log(response);
+             new Noty({
+                 type: response.error == 1 ? 'warning' : 'success',
+                 layout: 'topRight',
+                 text: response.msg
+             }).show();
+             // refresh page after 2.5 seconds
+             setTimeout( function(){
+                if(response.error != 1)
+                        location.reload();
+                      }  , 2500 );
+        };
+        $.ajax({
+          type: type,
+          url: url,
+          data: formData,
+          success: success,
+          dataType: 'json'
+        });
+    };
+
+    // message submit handler
+    $( "#message_form" ).submit(function( event ) {
+      event.preventDefault();
+      submitFormHandler('/message', $("#message_form").serialize());
+    });
+
+    // ref： https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function parseHtmlEntities(str) {
+      var e = document.createElement('textarea');
+      e.innerHTML = str;
+      // handle case of empty input
+      return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    // on message delete
+    $("#message_delete_btn_").click(function () {
+        submitFormHandler('/message/' + current_message, {}, "DELETE");
+    });
+
+    function arrayGrouBy(orgs, which_id="message_id") {
+        return orgs.reduce(function(results, org) {
+            (results[org[which_id]] = results[org[which_id]] || []).push(org);
+            return results;
+        }, {})
+    }
+
+    if (typeof replies !== 'undefined') {
+        replies = arrayGrouBy(replies)
+
+        $("#replay_form").submit(function (event) {
+            event.preventDefault();
+            if (current_message)
+                submitFormHandler('/message_reply', $("#replay_form").serialize() + '&msg_id=' + current_message);
+        })
+
+    }
+
+    // init message page
+    if ($("#new_message_btn").length) {
+        $("#new_message_btn").click();
+    }
 });
