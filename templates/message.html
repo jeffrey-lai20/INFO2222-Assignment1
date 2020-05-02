@@ -1,100 +1,50 @@
 <div id="main-container" class="container">
     <div class="row">
-        <div class="col-lg-4 col-md-6 left-side" id="btn_list">
-            <p><br/></p>
-            <div class="row">
-                <a href="javascript:void(0)" id="meeting_message_btn" class="message_btn" data-msg_id="meeting_message">
-                    <button type="button" class="btn-active" style="width: 378.34px; height: 50px"
-                    >Message 2</button></a>
-            </div>
-            <p><br/></p>
-            <div class="row">
-                <a href="javascript:void(0)" class="message_btn" data-msg_id="quiz1_message">
-                    <button type="button" style="width: 378.34px; height: 50px"
-                    >Quiz 1 Grade</button></a>
-            </div>
-            <p><br/></p>
-            <div class="row">
-                <a href="javascript:void(0)" class="message_btn" data-msg_id="meeting1_message">
-                    <button type="button" style="width: 378.34px; height: 50px"
-                    >Meeting 1</button></a>
-            </div>
-            <p><br/><br/><br></p>
-            <div class="row">
-                <button type="button" style="width:  378.34px; height: 50px; color: cornflowerblue;"
-                onclick="location.href = '/message';"
-                >Sent</button>
-            </div>
-            <p><br/></p>
-            <div class="row">
-                <button type="button" style="width:  378.34px; height: 50px; color: cornflowerblue;"
-                onclick="location.href = '/message';"
-                >Draft</button>
-            </div>
-
-            <p><br/></p>
+        <div class="col-lg-4 col-md-6 p-5 left-side" id="btn_list">
             <button id="new_message_btn" type="button" class="btn btn-info my-2 my-md-3" style="width: 100%">New Message</button>
-
+            <h5 style="border-bottom: 1px solid;" class="pb-2">Inbox</h5>
+            <div id="to_me_message_btns"></div>
+            <h5 style="border-bottom: 1px solid;" class="pb-2">Sent</h5>
+            <div id="from_me_message_btns"></div>
         </div>
         <div class="col-lg-4 col-md-6 not_in_new_message" style="border-right: 1px solid white;">
-            <div id="meeting_message" class="mt-5 ml-2 message_wrapper">
-                <h5>Meeting 2</h5>
-                <font color="gray"><p>Lisa H<br/><br/></p></font>
-                <p>Hello Eric, don't forget tomorrow's meeting!<br/><br/></p>
-
-                <font color="gray"><p>Thank you!<br/></p></font>
+            <div id="msg_content" class="mt-5 ml-2 message_wrapper">
+                <h5 id="msg_title"></h5>
+                <font color="gray"><p id="msg_from_user"></p></font>
+                <p id="msg_body"></p>
             </div>
 
-            <div id="quiz1_message" class="mt-5 ml-2 d-none message_wrapper">
-                <h5>Quiz 1 Grade</h5>
-                <font color="gray"><p>Martin Smith<br/><br/></p></font>
-                <p>Hello Eric, your quiz 1 grade report is ready in the uni system.<br/><br/></p>
-                <p>
-                    For more information please send request to something@usyd.edu.au
-                    <br/><br/>
-                </p>
-
-                <font color="gray"><p>Thank you!<br/></p></font>
-                <font color="gray"><p>Martin<br/></p></font>
+            <div id="replies_wrapper">
             </div>
 
-            <div id="meeting1_message" class="mt-5 ml-2 d-none message_wrapper">
-                <h5>Meeting 1</h5>
-                <font color="gray"><p>Justin Johnson<br/><br/></p></font>
-                <p>Hello Eric, please notice that the meeting 1's time has changed to 1 pm at 03/04/2020.<br/><br/></p>
-
-                <font color="gray"><p>Thank you!<br/></p></font>
-                <font color="gray"><p>Justin<br/></p></font>
-            </div>
-
-
-            <p><br/><br/><br/></p>
-            Reply:<br><textarea type="text" placeholder="Replies here..." style="width:100%; height: 80px;" id="fname"
-                                name="fname"></textarea><br><br>
-            <a href="forum_answer"><input type="submit" value="Submit"></a>
+            <form id="replay_form" class="mt-3">
+                Reply:<br><textarea type="text" placeholder="Replies here..." style="width:100%; height: 80px;" id="replay_box"
+                                    name="replay"></textarea><br><br>
+                <a href="forum_answer"><input type="submit" value="Submit"></a>
+            </form>
         </div>
 
         <div class="col-lg-4 col-md-6 in_new_message d-none" style="border-right: 1px solid white;">
             <div id="send_message_alert" class="mt-5"></div>
-            <form>
+            <form id="message_form" action="/message">
               <div class="form-group">
-                <label for="">To:</label>
-                <input type="email" class="form-control" placeholder="">
+                <label for="">To</label>
+                <input type="text" name="to_user" class="form-control" placeholder="">
+              </div>
+<!--              <div class="form-group">-->
+<!--                <label for="">CC:</label>-->
+<!--                <input type="email" class="form-control" placeholder="">-->
+<!--              </div>-->
+              <div class="form-group">
+                <label for="">Subject</label>
+                <input type="text" name="subject" class="form-control" placeholder="">
               </div>
               <div class="form-group">
-                <label for="">CC:</label>
-                <input type="email" class="form-control" placeholder="">
-              </div>
-              <div class="form-group">
-                <label for="">Add a Subject</label>
-                <input type="text" class="form-control" placeholder="">
-              </div>
-              <div class="form-group">
-                <label for="">Add a Subject</label>
-                  <textarea type="text" class="form-control" placeholder="Text your email here"></textarea>
+                <label for="">Content</label>
+                  <textarea type="text" name="body" rows="10" class="form-control" placeholder="Text your email here"></textarea>
               </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-success send_message">Send</button>
+                    <button type="submit" class="btn btn-success send_message_">Send</button>
                     <button type="button" class="btn btn-warning reset_message">Discard</button>
                 </div>
             </form>
@@ -102,7 +52,7 @@
 
         <div class="col-lg-4 col-md-6 not_in_new_message">
             <div class="mt-5 ml-2">
-                <a href="javascript:void(0)" id="message_delete_btn"
+                <a href="javascript:void(0)" id="message_delete_btn_"
                    style="text-decoration: underline; color:darkorange;">Delete</a>
             </div>
         </div>
@@ -110,12 +60,25 @@
         <div class="col-lg-4 col-md-6 in_new_message d-none">
             <div class="mt-5 ml-2">
                 <h5 class="mb-4">Staff's Contact Information</h5>
-                <p>Sam -- INFO2222 Lecturer</p>
-                <p>Alice -- INFO2222 Tutor</p>
-                <p>Frank -- INFO2222 TA</p>
-                <p>John -- INFO2222 Lecturer</p>
+                <p>To: admin -- Administrator</p>
+                <p>To: staff -- Staff A</p>
             </div>
         </div>
 
     </div>
 </div>
+<script>
+    const _from_me_messages = '${from_me_messages}';
+    const _to_me_messages = '${to_me_messages}';
+    const _replies = '${replies}';
+    var from_me_messages;
+    var to_me_messages;
+    var replies;
+    try {
+        from_me_messages = JSON.parse(_from_me_messages);
+        to_me_messages = JSON.parse(_to_me_messages);
+        replies = JSON.parse(_replies);
+    } catch (e) {
+        console.log(e);
+    }
+</script>

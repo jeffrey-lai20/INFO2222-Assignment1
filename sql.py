@@ -1,7 +1,7 @@
 import sqlite3
 
 # This class is a simple handler for all of our SQL database actions
-# Practicing a good separation of concerns, we should only ever call 
+# Practicing a good separation of concerns, we should only ever call
 # These functions from our models
 
 # If you notice anything out of place here, consider it to your advantage and don't spoil the surprise
@@ -34,7 +34,7 @@ class SQLDatabase():
         self.conn.commit()
 
     #-----------------------------------------------------------------------------
-    
+
     # Sets up the database
     # Default admin password
     def database_setup(self, admin_password='admin'):
@@ -45,7 +45,6 @@ class SQLDatabase():
 
         # Create the users table
         self.execute("""CREATE TABLE Users(
-            Id INT,
             username TEXT,
             password TEXT,
             admin INTEGER DEFAULT 0
@@ -78,7 +77,7 @@ class SQLDatabase():
     # Check login credentials
     def check_credentials(self, username, password):
         sql_query = """
-                SELECT 1 
+                SELECT 1
                 FROM Users
                 WHERE username = '{username}' AND password = '{password}'
             """
@@ -90,3 +89,7 @@ class SQLDatabase():
             return True
         else:
             return False
+
+
+forum = SQLDatabase("forum.db")
+forum.add_user('asd', 'asd', 'user')

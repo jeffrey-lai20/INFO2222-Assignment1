@@ -28,21 +28,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <li class="active">
               <a class="nav-link" href="/resource">Resource</a>
             </li>
             <pre class="tab">       </pre>
+            <li class="active">
               <a class="nav-link" href="/forum">Forum</a>
             </li>
             <pre class="tab">       </pre>
+            <li class="active">
               <a class="nav-link" href="/message">Message</a>
             </li>
             <pre class="tab">                     </pre>
               <a class="nav-link" href="/home">Home</a>
-            </li>
+
               <a class="nav-link" href="/profile">Profile</a>
-            </li>
+
               <a class="nav-link" href="/logout">Logout</a>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -61,7 +64,10 @@
             <ul>
           %   for file in sorted(files):
           <center>
-              <a href="{{root}}resource/download/{{file}}" download><button class="btn" style="height:50px; width:70%">{{file}}</button></a>&emsp;<a href="{{root}}resource/delete/{{file}}">delete</a></li>
+              <a href="{{root}}resource/download/{{file}}" download><button class="btn" style="height:50px; width:70%">{{file}}</button></a>
+              %if user_role != "user":
+                &emsp;<a href="{{root}}resource/delete/{{file}}">delete</a></li>
+              %end
               <br><br>
             </center>
           %   end

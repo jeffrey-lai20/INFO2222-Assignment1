@@ -7,12 +7,14 @@
 '''
 import view
 import random
-from bottle import template, redirect, static_file
+from bottle import template, redirect, static_file, request
 import bottle
 from beaker.middleware import SessionMiddleware
 from cork import Cork
 from datetime import datetime, timedelta
 import logging
+import json
+from html import escape, unescape
 
 global name
 name = ""
@@ -34,7 +36,12 @@ def current_user_data():
     """Show current user role"""
     session = bottle.request.environ.get('beaker.session')
     aaa.require(fail_redirect='/login')
-    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role };
+    return { 'user_email': aaa.current_user.email_addr, 'user_role': aaa.current_user.role, 'username':aaa.current_user.username};
+
+def all_user_data():
+    session = bottle.request.environ.get('beaker.session')
+    aaa.require(fail_redirect='/login')
+    return { 'users': aaa._store.users};
 
 def user_is_anonymous():
     if aaa.user_is_anonymous:
@@ -114,24 +121,27 @@ def register_post(username, password, confirm_password):
         reason = "Username and password could not be empty!"
     if username in aaa._store.users:
         reason = "User is already existing."
-    if username != confirm_password:
+    if password != confirm_password:
         reason = "Password are not matching."
+
+    if reason != "":
+        return redirect("/invalid?reason=" + reason)
 
     try:
         aaa._store.users[username] = {
             "role": "user",
+            "username": username,
             "hash": aaa._hash(username=username, pwd=password),
             "email_addr": "",
             "desc": "",
             "creation_date": str(datetime.utcnow()),
             "last_login": str(datetime.utcnow()),
+            "muted" : 0,
         }
         aaa._store.save_users()
     except Exception as e:
         reason = 'Caught this server error: ' + repr(e)
 
-    if reason != "":
-        return redirect("/invalid?reason=" + reason)
     else:
         return redirect("/login?redirect_msg=Registered%20successfully!%20Please%20Login.")
 
@@ -178,7 +188,8 @@ def error404():
         404
         Returns the view for the 404 page
     '''
-    return page_view("error404", page_title="404 Not Found")
+    # return page_view("error404", page_title="404 Not Found")
+    return template("templates/error404")
 
 #-----------------------------------------------------------------------------
 # logout
@@ -207,34 +218,167 @@ def about_garble():
 
 #-----------------------------------------------------------------------------
 
-def info2222_homepage():
+def message(db):
     aaa.require(fail_redirect='/login')
-    return page_view("info2222", page_title = "INFO2222-Homepage" , **current_user_data())
+    current_user = aaa.current_user.username
+    from_mes = query_db(db, 'SELECT * from messages where from_user=?', (current_user,))
+    to_mes = query_db(db, 'SELECT * from messages where to_user=?', (current_user,))
+    message_ids = [x["id"] for x in from_mes] + [x["id"] for x in to_mes]
 
-def info2222_forum():
-    aaa.require(fail_redirect='/login')
-    return page_view("info2222_forum", page_title = "INFO2222-Forum", **current_user_data())
 
-def announcement_final():
-    aaa.require(fail_redirect='/login')
-    return page_view("announcement_final", page_title = "INFO2222-Forum", **current_user_data())
+    format_strings=','.join(['?'] * len(message_ids))
+    r_sql = 'SELECT * FROM replies where message_id in (%s)' % format_strings
+    replies = query_db(db, r_sql,
+                   tuple(message_ids))
 
-def forum_new_thread():
-    aaa.require(fail_redirect='/login')
-    return page_view("forum_new_thread", page_title = "INFO2222-Forum", **current_user_data())
+    # print('SELECT * FROM replies from message_id in (?)' % format_strings)
+    return page_view("message", page_title = "Message", from_me_messages = json.dumps(from_mes),
+                     to_me_messages = json.dumps(to_mes), replies = json.dumps(replies), **current_user_data())
 
-def forum_new_thread_post():
-    aaa.require(fail_redirect='/login')
-    return page_view("forum_new_thread_post", page_title = "INFO2222-Forum", **current_user_data())
+def message_post(db):
+    result ={'error': 1}
+    if aaa.user_is_anonymous:
+        result['msg'] = 'Please Login!'
+        return json.dumps(result)
 
-def forum_answer():
-    aaa.require(fail_redirect='/login')
-    return page_view("forum_answer", page_title = "INFO2222-Forum", **current_user_data())
+    from_user = aaa.current_user.username
+    to_user = request.forms.get('to_user')
+    subject = request.forms.get('subject')
+    body = request.forms.get('body')
 
-def message():
-    aaa.require(fail_redirect='/login')
-    return page_view("message", page_title = "INFO2222-Message", **current_user_data())
+    # simple from validation
+    if (not to_user) or (not subject) or (not body):
+        result['msg'] = 'Please complete the form!'
+        return json.dumps(result)
+    if not aaa.user(to_user):
+        result['msg'] = '"To" user cannot be found! Please check.'
+        return json.dumps(result)
+    if to_user == from_user:
+        result['msg'] = 'You cannot send message to yourself!'
+        return json.dumps(result)
+
+    # input filter for security purpose
+    subject=escape(repr(subject)[1:-1])
+    body=escape(repr(body)[1:-1])
+
+    try:
+        db.execute(
+            """INSERT INTO messages(from_user, to_user, subject, body, create_at) VALUES (?,?,?,?,?)""",
+            (from_user, to_user, subject, body, datetime.now().strftime('%Y-%m-%d-%H:%M:%S')))
+    except Exception as e:
+        result['msg'] = 'Database error! Please contact the administrator!'
+        print(e)
+        return json.dumps(result)
+
+    result['error'] = 0
+    result['msg'] = 'Message has been sent successfully!'
+    return json.dumps(result)
+
+def message_delete(message_id, db):
+    result={'error': 1}
+    if aaa.user_is_anonymous:
+        result['msg'] = 'Please Login!'
+        return json.dumps(result)
+
+    current_user = aaa.current_user.username;
+
+    try:
+        db.execute(
+            """DELETE FROM messages WHERE id=? AND (from_user=? OR to_user=?)""",
+            (message_id, current_user, current_user,))
+        db.execute(
+            """DELETE FROM replies WHERE message_id=?""",
+            (message_id,))
+    except Exception as e:
+        result['msg'] = 'Database error! Please contact the administrator!'
+        print(e)
+        return json.dumps(result)
+
+    result['error'] = 0
+    result['msg'] = 'Message has been deleted successfully!'
+    return json.dumps(result)
+
+def message_reply_post(db):
+    result={'error': 1}
+    if aaa.user_is_anonymous:
+        result['msg'] = 'Please Login!'
+        return json.dumps(result)
+
+    current_user = aaa.current_user.username
+    from_user = current_user
+    body = request.forms.get('replay')
+    body = escape(repr(body)[1:-1])
+    message_id = request.forms.get('msg_id')
+    try:
+        db.execute(
+            """INSERT INTO replies(from_user, message_id, body, create_at) VALUES (?,?,?,?)""",
+            (from_user, message_id, body, datetime.now().strftime('%Y-%m-%d-%H:%M:%S')))
+    except Exception as e:
+        result['msg'] = 'Database error! Please contact the administrator!'
+        print(e)
+        return json.dumps(result)
+
+    result['error'] = 0
+    result['msg'] = 'The Reply has been sent successfully!'
+    return json.dumps(result)
 
 def profile():
     aaa.require(fail_redirect='/login')
-    return page_view("profile", page_title = "Profile", **current_user_data())
+    return template("templates/profile.html", **current_user_data())
+    #return page_view("profile", page_title = "Profile", **current_user_data())
+def manage_user():
+    aaa.require(fail_redirect='/login')
+    if aaa.current_user.role=='user':
+        return error404()
+    else:
+        return template("templates/manage_user.html", **all_user_data())
+
+def reset_password():
+    aaa.require(fail_redirect='/login')
+    return page_view("reset_password", page_title = "Reset Password", **current_user_data())
+
+def reset_password_post(old_password, new_password, confirm_password):
+
+    result ={'error': 1}
+    if aaa.user_is_anonymous:
+        result['msg'] = 'Please Login!'
+        return json.dumps(result)
+
+    reason = ""
+    current_user = aaa.current_user
+
+    if old_password == "" or new_password == "" or confirm_password == "": # Wrong Username
+        reason = "Please complete the form!"
+    salted_hash = aaa._store.users[current_user.username]["hash"]
+    if hasattr(salted_hash, "encode"):
+        salted_hash=salted_hash.encode("ascii")
+    authenticated=aaa._verify_password(current_user.username, old_password, salted_hash)
+    if not authenticated:
+        reason = "Old password is not valid! Please check."
+    if new_password != confirm_password:
+        reason = "Password are not matching."
+
+    if reason != "":
+        return redirect("/invalid?reason=" + reason)
+
+    try:
+        """Change password"""
+        aaa.reset_password(aaa._reset_code(current_user.username, current_user.email_addr), new_password)
+    except Exception as e:
+        reason = 'Caught this server error: ' + repr(e)
+
+    if reason != "":
+        return redirect("/invalid?reason=" + reason)
+    else:
+        return aaa.logout(success_redirect="/invalid?reason=Your%20password%20has%20been%20changed,%20please%20login%20in%20again!")
+
+# util functions
+def convert_to_json(cursor):
+    return json.dumps([dict(zip([column[0] for column in cursor.description], row))
+             for row in cursor.fetchall()])
+def query_db(db, query, args=(), one=False):
+    cur = db.cursor()
+    cur.execute(query, args)
+    r = [dict((cur.description[i][0], value) \
+               for i, value in enumerate(row)) for row in cur.fetchall()]
+    return (r[0] if r else None) if one else r

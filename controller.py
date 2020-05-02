@@ -4,11 +4,12 @@
     maybe some simple program logic
 '''
 
-from bottle import route, get, post, request, static_file, error, Bottle, template
+from bottle import route, get, post, request, static_file, error, Bottle, template, redirect, delete
 import os
 import argparse
 import model
 import bottle
+import sqlite3
 
 global login
 login = 0
@@ -203,50 +204,166 @@ def error404(error):
 
 #-----------------------------------------------------------------------------
 
-# Subject's Homepage
-@get('/info2222')
-def info2222_homepage():
-    return model.info2222_homepage()
 
-# -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
-
+#list all Threads
 @get('/forum')
-def info2222_forum():
-    return model.info2222_forum()
+def get_forum(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    threads = []
+    cursor = c.execute("SELECT name, role, topic, reply, content, id, reply_id from FORUM")
+    for row in cursor:
+        threads.append(row)
+    threads.reverse()
+    conn.close()
+    return model.template("templates/forum.html", threads = threads, thread_name = thread_name, **model.current_user_data(), muted = model.all_user_data()['users'][model.current_user_data()['username']]['muted'])
 
-#-----------------------------------------------------------------------------
+@get('/forum/new')
+def forum_new(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    threads = []
+    cursor = c.execute("SELECT name, role, topic, reply, content, id, reply_id from FORUM")
+    for row in cursor:
+        threads.append(row)
+    threads.reverse()
+    conn.close()
+    return model.template("templates/forum_new.html", threads = threads, thread_name = thread_name, muted = model.all_user_data()['users'][model.current_user_data()['username']]['muted'])
 
-@get('/announcement_final')
-def announcement_final():
-    return model.announcement_final()
+@post('/forum/new')
+def receive_forum_new(thread_name = None):
+    model.aaa.require(fail_redirect='/login')
+    thread_name = request.forms.get('topic')
+    content = request.forms.get('content')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
 
-#-----------------------------------------------------------------------------
 
-@get('/forum_new_thread')
-def forum_new_thread():
-    return model.forum_new_thread()
+#     c.execute("SELECT count(*) FROM FORUM WHERE topic='"+thread_name+"'")
+#
+# #if the count is 1, then table exists
+#     if c.fetchone()[0]>=1 :
+#     	c.execute("UPDATE FORUM set content = '"+content+"' where topic='"+thread_name+"' and reply = 'no'")
+#     else :
+    c.execute("INSERT INTO FORUM (name,role,topic,reply,content) \
+      VALUES ('"+model.aaa.current_user.username+"', '"+model.aaa.current_user.role+"', '"+thread_name+"', 'no', '"+content+"')")
+    conn.commit()
+    conn.close()
+    return get_forum()
 
-#-----------------------------------------------------------------------------
+@get('/forum/read/<thread_name>')
+def get_forum_by_name(thread_name):
+    model.aaa.require(fail_redirect='/login')
+    return get_forum(thread_name)
 
-@get('/forum_new_thread_post')
-def forum_new_thread_post():
-    return model.forum_new_thread_post()
+@post('/forum/read/<thread_name>')
+def get_reply(thread_name):
+    model.aaa.require(fail_redirect='/login')
+    reply = request.forms.get('reply')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO FORUM (name,role,topic,reply,content,id) \
+          VALUES ('"+model.aaa.current_user.username+"', '"+model.aaa.current_user.role+"', '"+"reply"+"', 'yes', '"+reply+"', '"+thread_name+"')")
+    conn.commit()
+    conn.close()
+    return get_forum(thread_name)
 
-#-----------------------------------------------------------------------------
-
-@get('/forum_answer')
-def forum_answer():
-    return model.forum_answer()
-
-#-----------------------------------------------------------------------------
-
-@get('/message')
-def message():
-    return model.message()
+@get('/forum/delete/<info>')
+def get_delete(info):
+    model.aaa.require(fail_redirect='/login')
+    reply = request.forms.get('reply')
+    conn = sqlite3.connect('forum.db')
+    c = conn.cursor()
+    if len(info.split('_y_')) == 2:
+        info = info.split('_y_')
+        c.execute("DELETE FROM FORUM WHERE reply_id = '"+info[0]+"'")
+        conn.commit()
+        conn.close()
+        return get_forum(info[1])
+    elif len(info.split('_n_')) == 2:
+        # print(info)
+        info = info.split('_n_')
+        # print(info)
+        # c.execute("DELETE FROM FORUM WHERE topic = '"+info[0]+"' and reply = 'no'")
+        # c.execute("DELETE FROM FORUM WHERE topic = '"+info[0]+"' and reply = 'yes'")
+        c.execute("DELETE FROM FORUM WHERE id = '"+info[0]+"'")
+        conn.commit()
+        conn.close()
+        return get_forum(None)
 
 @get('/profile')
 def profile():
     return model.profile()
 
+@get('/manage_user')
+def manage_user():
+    return model.manage_user()
+
+@get('/delete/<user_name>')
+def delete_user(user_name):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    del model.all_user_data()['users'][user_name]
+    return bottle.redirect('/manage_user')
+
+@get('/promote/<user_name>')
+def promote(user_name):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    model.all_user_data()['users'][user_name]['role'] = 'staff'
+    return bottle.redirect('/manage_user')
+
+@get('/profile/reset_password')
+def reset_password():
+    model.aaa.require(fail_redirect='/login')
+    return
+
+@get('/mute/<user>')
+def mute_user(user):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    model.all_user_data()['users'][user]['muted'] = 1
+    return bottle.redirect('/manage_user')
+
+@get('/unmute/<user>')
+def unmute_user(user):
+    model.aaa.require(fail_redirect='/login')
+    if model.aaa.current_user.role=='user':
+        return model.error404()
+    model.all_user_data()['users'][user]['muted'] = 0
+    return bottle.redirect('/manage_user')
+
 ##########################################################################################
+
+@get('/message')
+def message(db):
+    return model.message(db)
+
+@post('/message')
+def message_post(db):
+    return model.message_post(db)
+
+@delete('/message/<message_id:int>')
+def message_delete(message_id, db):
+    return model.message_delete(message_id, db)
+
+@post('/message_reply')
+def message_reply(db):
+    return model.message_reply_post(db)
+
+@get('/reset_password')
+def reset_password():
+    return model.reset_password()
+
+@post('/reset_password')
+def reset_password_post():
+    # Handle the form processing
+    old_password = request.forms.get('old_password')
+    new_password = request.forms.get('new_password')
+    confirm_password = request.forms.get('confirm_password')
+    return model.reset_password_post(old_password, new_password, confirm_password)

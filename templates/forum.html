@@ -1,0 +1,155 @@
+<!-- <styles>
+  hr{
+    padding: 0px;
+    margin: 0px;
+  }
+</styles> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="js/script_head.js"></script>
+
+  <title>USYD Support</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap4/bootstrap.min.css">
+  <!-- Noty CSS -->
+  <link href="css/noty.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/temp.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/home">USYD Support</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="active">
+              <a class="nav-link" href="/resource">Resource</a>
+            </li>
+            <pre class="tab">       </pre>
+            <li class="active">
+              <a class="nav-link" href="/forum">Forum</a>
+            </li>
+            <pre class="tab">       </pre>
+            <li class="active">
+              <a class="nav-link" href="/message">Message</a>
+            </li>
+            <pre class="tab">                     </pre>
+              <a class="nav-link" href="/home">Home</a>
+
+              <a class="nav-link" href="/profile">Profile</a>
+
+              <a class="nav-link" href="/logout">Logout</a>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="header-breadscrumb" class="container">
+        Forum
+    </div>
+
+
+
+
+
+
+
+
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 left-side" id="btn_list">
+      <div class="row">
+        % for thread in threads:
+          %if thread[3] == 'no':
+              &nbsp;<a href="/forum/read/{{thread[5]}}"><button class="btn" style="height:50px; width:373px; background-color: #343a40; color : white">{{thread[2]}}</button></a>
+          <hr color = "white" width = "377px" style='margin-top:0em; margin-bottom:0em' />
+          %end
+        %end
+        <p><br/></p>
+
+
+        <a href = '/forum/new'><button style="width: 378px; height:55px" id="new_message_btn" type="button" class="btn btn-info my-2 my-md-3" style="width: 100%">New Thread</button></a>
+
+
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-12 not_in_new_message" style="border-right: 1px solid white;">
+      % if not thread_name:
+        <br>
+        <br>
+        <center><h3 style = "color:#85C1E9">Select a Thread</h3></center>
+      %else:
+        <br>
+        % for thread in threads:
+            %if thread[5] == thread_name and thread[3] == 'no':
+              <center><h5 style = "color:#85C1E9">{{thread[2]}}</h5></center>
+              <br>
+              <center><p style="color:grey">{{thread[0]}} ({{thread[1]}})</p></center>
+              <br>
+              <p>{{thread[4]}}</p>
+              %if user_role != 'user':
+                <p style="text-align:right"><a href = '/forum/delete/{{thread[5]}}_n_1'>delete</a></p>
+              %end
+
+                %break
+          %end
+        %end
+        <br>
+        <center><hr style = "background-color:white"></center>
+        % for thread in threads:
+            %if thread[5] == thread_name and thread[3] == 'yes':
+              <p style="color:grey">{{thread[0]}} ({{thread[1]}}): </p>
+              <p>{{thread[4]}}</p>
+              %if user_role != 'user':
+                <p style="text-align:right"><a href = '/forum/delete/{{thread[6]}}_y_{{thread[5]}}'>delete</a></p>
+              %end
+              <hr style = "background-color:white">
+          %end
+        %end
+
+        %if muted == 0:
+          <form action = "/forum/read/{{thread_name}}" method="POST">
+          <textarea id="reply" name="reply" style = "background-color:#E0FFFF;" rows="4" cols="89" placeholder="Your reply:"></textarea>
+          <input value = "reply" type="submit"/>
+          </form>
+        %else:
+          <textarea style = "background-color:#E0FFFF;" rows="4" cols="89">You have been muted, please contact staff!</textarea>
+        %end
+      %end
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  <div class="d-none" id="user_data" data-user_role="${user_role}" data-user_email="${user_email}"></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap4/bootstrap.min.js"></script>
+  <script src="js/noty.min.js" type="text/javascript"></script>
+  <script src="js/script_tail.js"></script>
+
+  </body>
+  </html>
