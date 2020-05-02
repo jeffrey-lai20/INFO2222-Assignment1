@@ -172,12 +172,12 @@ $(function () {
 
     var current_message;
     // "add new" button
-    const new_message_button = '<button id="new_message_btn" type="button" class="btn btn-info my-2 my-md-3" style="width: 100%">New Message</button>';
-    $("#btn_list").prepend(new_message_button);
-
-    $("#new_message_btn").on("click", function () {
-        toggleNewMessagePage("open");
-    });
+    // const new_message_button = '<button id="new_message_btn" type="button" class="btn btn-info my-2 my-md-3" style="width: 100%">New Message</button>';
+    // $("#btn_list").prepend(new_message_button);
+    //
+    // $("#new_message_btn").on("click", function () {
+    //     toggleNewMessagePage("open");
+    // });
 
     function show_message_btns(messages, selector) {
         try {
@@ -273,6 +273,8 @@ $(function () {
 
     // init message page
     if ($("#new_message_btn").length) {
-        $("#new_message_btn").click();
+      $("#new_message_btn").on("click", function () {
+          toggleNewMessagePage("open");
+      }).click();
     }
 });
