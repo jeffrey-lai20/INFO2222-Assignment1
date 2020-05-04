@@ -15,14 +15,19 @@
 #-----------------------------------------------------------------------------
 
 import sys
-from bottle import run
-from bottle import route, get, post, request, static_file, error, Bottle, template
+from bottle import get, post, request, static_file, error, Bottle, template,ServerAdapter, route, run, server_names
 import bottle.ext.sqlite
 import model
 import argparse
 import bottle
 from beaker.middleware import SessionMiddleware
 import os
+from cheroot import wsgi
+from cheroot.ssl.builtin import BuiltinSSLAdapter
+
+import ssl
+import crypt
+import pwd
 
 #-----------------------------------------------------------------------------
 # You may eventually wish to put these in their own directories and then load
@@ -103,12 +108,28 @@ def create_files_dir(path):
 
 ################################################################################################################
 app = bottle.app()
+
+class SSLCherryPyServer(ServerAdapter):
+
+    def run(self, handler):
+        server = wsgi.Server((self.host, self.port), handler)
+        server.ssl_adapter = BuiltinSSLAdapter("server.crt", "server.key")
+
+        server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1
+        server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1_1
+
+        try:
+            server.start()
+        finally:
+            server.stop()
+
 def run_server():
     '''
         run_server
         Runs a bottle server
     '''
     # app = bottle.app()
+
 
     # add bottle-sqlite plugin
     # link to sqlite3 database
@@ -141,7 +162,8 @@ def run_server():
 ################################################################################################################
 
     appp = SessionMiddleware(app, session_opts)
-    run(host=host, port=port, app=appp, debug=debug, fast=fast)
+    run(app=appp, host=host, port=port, server=SSLCherryPyServer,debug=debug, fast=fast)
+
 
 #-----------------------------------------------------------------------------
 # Optional SQL support
