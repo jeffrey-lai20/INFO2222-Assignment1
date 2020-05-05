@@ -14,7 +14,6 @@ default_target = "https://0.0.0.0:8080/forum/read/643d0c5f-e88a-48d7-bf16-8b1c8e
 def scrape(target):
 
     driver = webdriver.Firefox()
-    groups = {}
 
     print("Going to home page")
     driver.get("https://0.0.0.0:8080/")
@@ -64,7 +63,6 @@ def scrape(target):
     time.sleep(1)
     print("Finished, closing web driver.")
     driver.close()
-    return groups
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
