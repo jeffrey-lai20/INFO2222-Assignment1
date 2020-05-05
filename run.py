@@ -113,7 +113,7 @@ class SSLCherryPyServer(ServerAdapter):
 
     def run(self, handler):
         server = wsgi.Server((self.host, self.port), handler)
-        server.ssl_adapter = BuiltinSSLAdapter("server.crt", "server.key")
+        server.ssl_adapter = BuiltinSSLAdapter("ca.crt", "ca.key")
 
         server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1
         server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1_1
@@ -162,7 +162,7 @@ def run_server():
 ################################################################################################################
 
     appp = SessionMiddleware(app, session_opts)
-    run(app=appp, host=host, port=port, server=SSLCherryPyServer,debug=debug, fast=fast)
+    run(app=appp, host=host, port=port, server=SSLCherryPyServer, fast=fast)
 
 
 #-----------------------------------------------------------------------------
