@@ -9,7 +9,7 @@ import getpass
 
 from selenium import webdriver
 
-default_target = "https://0.0.0.0:8080/resource"
+default_target = "https://0.0.0.0:8080/forum/read/643d0c5f-e88a-48d7-bf16-8b1c8e8d2956"
 
 def scrape(target):
 
@@ -43,11 +43,24 @@ def scrape(target):
     # Hit the button
     login_button = driver.find_element_by_name("loginButton")
     login_button.click()
+    print("Logged in!")
 
     time.sleep(1)
 
-    print("Logged in!")
+    driver.get("https://0.0.0.0:8080/forum")
+
+    time.sleep(1)
+
     driver.get(target)
+    print("Arrived at target")
+    time.sleep(1)
+    print("Replying")
+    reply_field = driver.find_element_by_name("reply")
+    reply_field.clear()
+    reply_field.send_keys("This is a reply")
+    reply_button = driver.find_element_by_name("replyButton")
+    reply_button.click()
+
     time.sleep(1)
     print("Finished, closing web driver.")
     driver.close()

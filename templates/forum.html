@@ -123,7 +123,7 @@
         %if muted == 0:
           <form action = "/forum/read/{{thread_name}}" method="POST">
           <textarea id="reply" name="reply" style = "background-color:#E0FFFF;" rows="4" cols="89" placeholder="Your reply:"></textarea>
-          <input value = "reply" type="submit"/>
+          <input value = "reply" type="submit" name="replyButton"/>
           </form>
         %else:
           <textarea style = "background-color:#E0FFFF;" rows="4" cols="89">You have been muted, please contact staff!</textarea>
