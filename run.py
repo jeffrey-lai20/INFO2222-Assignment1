@@ -162,7 +162,7 @@ def run_server():
 ################################################################################################################
 
     appp = SessionMiddleware(app, session_opts)
-    run(app=appp, host=host, port=port, server=SSLCherryPyServer,debug=debug, fast=fast)
+    run(app=appp, host=host, port=port, server=SSLCherryPyServer, fast=fast)
 
 
 #-----------------------------------------------------------------------------
