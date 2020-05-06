@@ -39,3 +39,25 @@ observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
 1588790292811	Marionette	WARN	TLS certificate errors will be ignored for this session
 [Parent 28340, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
 1588790295982	Marionette	INFO	Stopped listening on port 37801
+1588790324299	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileCsh66T"
+1588790324572	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588790324612	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588790324613	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588790326030	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588790326237	Marionette	INFO	Listening on port 43923
+1588790326324	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:28832): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588790334876	Marionette	INFO	Stopped listening on port 43923
+[Parent 28681, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
