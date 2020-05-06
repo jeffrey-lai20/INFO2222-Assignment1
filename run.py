@@ -71,14 +71,14 @@ def do_index():
     """List all uploaded files"""
     model.aaa.require(fail_redirect='/login')
     root = '%s/' % bottle.request.environ.get('SCRIPT_NAME')
-    return bottle.template('templates/resource.html', files=os.listdir(app.config['file_upload.dir']), root=root, **model.current_user_data())
-    #return model.page_view('resource', page_title="Resource", files=os.listdir(app.config['file_upload.dir']), root=root)
+    return bottle.template('templates/resource.html', files=os.listdir(request.app.config['file_upload.dir']), root=root, **model.current_user_data())
+    #return model.page_view('resource', page_title="Resource", files=os.listdir(request.app.config['file_upload.dir']), root=root)
 
 @get('/resource/download/<filename>')
 def do_download(filename):
     model.aaa.require(fail_redirect='/login')
     """Return a static file from the files directory"""
-    return bottle.static_file(filename, root=app.config['file_upload.dir'])
+    return bottle.static_file(filename, root=request.app.config['file_upload.dir'])
 
 @post('/resource/upload')
 def do_upload():
@@ -86,7 +86,7 @@ def do_upload():
     """Upload a file if it's missing"""
     upload = bottle.request.files.get('upload') # pylint: disable-msg=E1101
     try:
-        upload.save(app.config['file_upload.dir'])
+        upload.save(request.app.config['file_upload.dir'])
     except IOError as io_error:
         return bottle.HTTPError(409, io_error)
 
@@ -113,7 +113,7 @@ class SSLCherryPyServer(ServerAdapter):
 
     def run(self, handler):
         server = wsgi.Server((self.host, self.port), handler)
-        server.ssl_adapter = BuiltinSSLAdapter("server.crt", "server.key")
+        server.ssl_adapter = BuiltinSSLAdapter("ca.crt", "ca.key")
 
         server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1
         server.ssl_adapter.context.options |= ssl.OP_NO_TLSv1_1
@@ -224,4 +224,31 @@ def run_commands(args):
 
 #-----------------------------------------------------------------------------
 
-run_commands(sys.argv)
+def app_instance():
+    plugin=bottle.ext.sqlite.Plugin(dbfile='./database/info2222.db')
+    app.install(plugin)
+
+    session_opts={
+        'session.cookie_expires': True,
+        'session.encrypt_key': 'please use a random key and keep it secret!',
+        'session.httponly': True,
+        'session.timeout': 3600 * 24,  # 1 day
+        'session.type': 'cookie',
+        'session.validate_key': True,
+    }
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    app.config.setdefault('file_upload.dir', 'files')
+
+    if os.path.exists('file_upload.conf'):
+        app.config.load_config('file_upload.conf')
+    create_files_dir(app.config['file_upload.dir'])
+
+    appp=SessionMiddleware(app, session_opts)
+    return appp
+
+#-----------------------------------------------------------------------------
+
+if __name__ == '__main__':
+  run_commands(sys.argv)
+else:
+  app = app_instance();
