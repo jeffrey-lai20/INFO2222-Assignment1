@@ -71,14 +71,14 @@ def do_index():
     """List all uploaded files"""
     model.aaa.require(fail_redirect='/login')
     root = '%s/' % bottle.request.environ.get('SCRIPT_NAME')
-    return bottle.template('templates/resource.html', files=os.listdir(app.config['file_upload.dir']), root=root, **model.current_user_data())
-    #return model.page_view('resource', page_title="Resource", files=os.listdir(app.config['file_upload.dir']), root=root)
+    return bottle.template('templates/resource.html', files=os.listdir(request.app.config['file_upload.dir']), root=root, **model.current_user_data())
+    #return model.page_view('resource', page_title="Resource", files=os.listdir(request.app.config['file_upload.dir']), root=root)
 
 @get('/resource/download/<filename>')
 def do_download(filename):
     model.aaa.require(fail_redirect='/login')
     """Return a static file from the files directory"""
-    return bottle.static_file(filename, root=app.config['file_upload.dir'])
+    return bottle.static_file(filename, root=request.app.config['file_upload.dir'])
 
 @post('/resource/upload')
 def do_upload():
@@ -86,7 +86,7 @@ def do_upload():
     """Upload a file if it's missing"""
     upload = bottle.request.files.get('upload') # pylint: disable-msg=E1101
     try:
-        upload.save(app.config['file_upload.dir'])
+        upload.save(request.app.config['file_upload.dir'])
     except IOError as io_error:
         return bottle.HTTPError(409, io_error)
 
