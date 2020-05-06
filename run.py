@@ -107,7 +107,7 @@ def create_files_dir(path):
         os.mkdir(path)
 
 ################################################################################################################
-app = bottle.app()
+app = bottle.default_app()
 
 class SSLCherryPyServer(ServerAdapter):
 
@@ -162,7 +162,7 @@ def run_server():
 ################################################################################################################
 
     appp = SessionMiddleware(app, session_opts)
-    run(app=appp, host=host, port=port, server=SSLCherryPyServer, fast=fast)
+    run(app=appp, host=host, port=port, fast=fast)
 
 
 #-----------------------------------------------------------------------------
@@ -225,7 +225,6 @@ def run_commands(args):
 #-----------------------------------------------------------------------------
 
 def app_instance():
-    app=bottle.default_app()
     plugin=bottle.ext.sqlite.Plugin(dbfile='./database/info2222.db')
     app.install(plugin)
 
