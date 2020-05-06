@@ -224,4 +224,32 @@ def run_commands(args):
 
 #-----------------------------------------------------------------------------
 
-run_commands(sys.argv)
+def app_instance():
+    app=bottle.default_app()
+    plugin=bottle.ext.sqlite.Plugin(dbfile='./database/info2222.db')
+    app.install(plugin)
+
+    session_opts={
+        'session.cookie_expires': True,
+        'session.encrypt_key': 'please use a random key and keep it secret!',
+        'session.httponly': True,
+        'session.timeout': 3600 * 24,  # 1 day
+        'session.type': 'cookie',
+        'session.validate_key': True,
+    }
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    app.config.setdefault('file_upload.dir', 'files')
+
+    if os.path.exists('file_upload.conf'):
+        app.config.load_config('file_upload.conf')
+    create_files_dir(app.config['file_upload.dir'])
+
+    appp=SessionMiddleware(app, session_opts)
+    return appp
+
+#-----------------------------------------------------------------------------
+
+if __name__ == '__main__':
+  run_commands(sys.argv)
+else:
+  app = application = app_instance();
