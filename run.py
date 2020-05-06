@@ -107,7 +107,7 @@ def create_files_dir(path):
         os.mkdir(path)
 
 ################################################################################################################
-app = bottle.default_app()
+app = bottle.app()
 
 class SSLCherryPyServer(ServerAdapter):
 
