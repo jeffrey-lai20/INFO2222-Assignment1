@@ -251,4 +251,4 @@ def app_instance():
 if __name__ == '__main__':
   run_commands(sys.argv)
 else:
-  app = application = app_instance();
+  app = app_instance();
