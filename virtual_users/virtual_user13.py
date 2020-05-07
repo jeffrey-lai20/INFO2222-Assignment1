@@ -9,7 +9,7 @@ import getpass
 
 from selenium import webdriver
 
-default_target = "https://0.0.0.0:8080/forum/delete/95c6d635-b90d-49ab-9917-375e802303cb_y_a5d51b5c-9999-4890-9d7f-4f294a783508"
+default_target = "https://0.0.0.0:8080/message"
 
 def scrape(target):
 
@@ -23,8 +23,8 @@ def scrape(target):
     print("Going to login page")
     driver.get("https://0.0.0.0:8080/login")
 
-    username = "test"
-    password = "test"
+    username = "test2"
+    password = "test2"
     print("Logging in")
 
     # Enter username
@@ -46,18 +46,28 @@ def scrape(target):
 
     time.sleep(1)
 
-    forum_button = driver.find_element_by_name("forumButton")
-    forum_button.click()
+    message_button = driver.find_element_by_name("messageButton")
+    message_button.click()
     time.sleep(1)
 
-    driver.get("https://0.0.0.0:8080/forum/read/a5d51b5c-9999-4890-9d7f-4f294a783508")
+    driver.find_element_by_id("new_message_btn").click();
     time.sleep(1)
 
-    print("Replying")
-    reply_field = driver.find_element_by_name("reply")
-    reply_field.clear()
-    reply_field.send_keys("Delete this reply")
-    reply_button = driver.find_element_by_name("replyButton")
+    print("Writing message")
+    to_field = driver.find_element_by_name("to_user")
+    to_field.clear()
+    to_field.send_keys("test3")
+
+    subject_field = driver.find_element_by_name("subject")
+    subject_field.clear()
+    subject_field.send_keys("Virtual")
+
+    body_field = driver.find_element_by_name("body")
+    body_field.clear()
+    body_field.send_keys("User message")
+
+
+    reply_button = driver.find_element_by_name("sendMessage")
     reply_button.click()
     time.sleep(1)
 
@@ -67,8 +77,8 @@ def scrape(target):
     print("Going to login page")
     driver.get("https://0.0.0.0:8080/login")
 
-    username = "staff"
-    password = "staff"
+    username = "test3"
+    password = "test3"
     print("Logging in")
 
     # Enter username
@@ -89,15 +99,30 @@ def scrape(target):
 
     time.sleep(1)
 
-    forum_button = driver.find_element_by_name("forumButton")
-    forum_button.click()
+    message_button = driver.find_element_by_name("messageButton")
+    message_button.click()
     time.sleep(1)
 
-    driver.get("https://0.0.0.0:8080/forum/read/a5d51b5c-9999-4890-9d7f-4f294a783508")
+    link1 = driver.find_element_by_link_text("Virtual")
+    link1.click()
     time.sleep(1)
 
-    link = driver.find_elements_by_link_text("delete")
-    link[len(link)-1].click()
+    replay_field = driver.find_element_by_name("replay")
+    replay_field.clear()
+    replay_field.send_keys("This is a reply")
+    time.sleep(1)
+
+    link2 = driver.find_element_by_name("submitButton")
+    link2.click()
+    time.sleep(4)
+
+
+    link3 = driver.find_element_by_link_text("Virtual")
+    link3.click()
+    time.sleep(1)
+
+    link4 = driver.find_element_by_link_text("Delete")
+    link4.click()
     time.sleep(1)
 
     driver.get(target)

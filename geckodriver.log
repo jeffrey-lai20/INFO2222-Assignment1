@@ -198,3 +198,784 @@ observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
 (/usr/lib64/firefox/firefox:27467): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
 1588789509576	Marionette	INFO	Stopped listening on port 44673
 [Parent 27320, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857429240	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile99Xf0E"
+1588857429509	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857429548	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857429550	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857430962	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857431208	Marionette	INFO	Listening on port 34765
+1588857431272	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:31618): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 31456, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 31456, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857474724	Marionette	INFO	Stopped listening on port 34765
+1588857479372	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilelusxXZ"
+1588857479641	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857479681	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857479682	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857481117	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857481325	Marionette	INFO	Listening on port 44983
+1588857481402	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:31926): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588857555709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileV3rs0l"
+1588857555974	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857556017	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857556019	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857557423	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857557762	Marionette	INFO	Listening on port 44405
+1588857557827	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:32229): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 32082, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857579851	Marionette	INFO	Stopped listening on port 44405
+[Parent 31772, Gecko_IOThread] WARNING: pipe error (87): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857581610	Marionette	INFO	Stopped listening on port 44983
+1588857604056	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileYvFopl"
+1588857604320	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857604358	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857604360	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857605910	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857606132	Marionette	INFO	Listening on port 45039
+1588857606184	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:32546): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588857760753	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileAt2aJZ"
+1588857761028	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857761068	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857761069	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857762625	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857762855	Marionette	INFO	Listening on port 34385
+1588857762872	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:393): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+[Parent 32713, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 32713, Gecko_IOThread] WARNING: pipe error (59): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857807520	Marionette	INFO	Stopped listening on port 34385
+1588857929842	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileJZWmx1"
+1588857930106	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857930144	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857930146	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857931551	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857931780	Marionette	INFO	Listening on port 37457
+1588857931855	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:769): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588857949574	Marionette	INFO	Stopped listening on port 37457
+[Parent 618, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857953780	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilegFvr7H"
+1588857954053	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857954093	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588857954094	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588857955514	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588857955855	Marionette	INFO	Listening on port 33153
+1588857955900	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:1268): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588857973781	Marionette	INFO	Stopped listening on port 33153
+[Parent 993, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588857983197	Marionette	INFO	Stopped listening on port 45039
+1588858055297	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile69UFD9"
+1588858055566	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858055606	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858055607	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858057014	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858057355	Marionette	INFO	Listening on port 46517
+1588858057454	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:1709): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588858083320	Marionette	INFO	Stopped listening on port 46517
+1588858137627	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileRFKeJ0"
+1588858137887	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858137926	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858137928	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858139337	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858139689	Marionette	INFO	Listening on port 41405
+1588858139761	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:2226): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588858174569	Marionette	INFO	Stopped listening on port 41405
+1588858217326	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileafeLN5"
+1588858217594	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858217633	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858217635	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858218998	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858219212	Marionette	INFO	Listening on port 43289
+1588858219237	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:2535): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588858260745	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5bLfsa"
+1588858261045	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858261085	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858261086	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858262483	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858262697	Marionette	INFO	Listening on port 44435
+1588858262770	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:2824): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588858312735	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileJdQ2NG"
+1588858313002	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858313042	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858313043	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858314446	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858314796	Marionette	INFO	Listening on port 36261
+1588858314855	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:3110): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  remote-settings/monitor_changes
+  threw error:
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+[Parent 2968, Gecko_IOThread] WARNING: pipe error (59): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858499558	Marionette	INFO	Stopped listening on port 36261
+1588858501716	Marionette	INFO	Stopped listening on port 44435
+[Parent 2389, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 2389, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858502994	Marionette	INFO	Stopped listening on port 43289
+1588858513720	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilej30Gtg"
+1588858513996	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858514039	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858514041	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858515437	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858515770	Marionette	INFO	Listening on port 41287
+1588858517284	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:3508): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 3356, Gecko_IOThread] WARNING: pipe error (59): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858535311	Marionette	INFO	Stopped listening on port 41287
+1588858648740	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileUg5RVY"
+1588858649014	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858649053	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858649055	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858650470	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858650668	Marionette	INFO	Listening on port 34319
+1588858650752	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:3830): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 3684, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 3684, Gecko_IOThread] WARNING: pipe error (87): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858668185	Marionette	INFO	Stopped listening on port 34319
+1588858744008	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileS41sM9"
+1588858744276	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858744316	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858744317	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858745754	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858746097	Marionette	INFO	Listening on port 33609
+1588858746125	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:4178): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 4032, Gecko_IOThread] WARNING: pipe error (59): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 4032, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858766582	Marionette	INFO	Stopped listening on port 33609
+1588858783852	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileDtsjep"
+1588858784120	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858784160	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858784161	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858785581	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858785801	Marionette	INFO	Listening on port 38103
+1588858785874	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:4475): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+[Parent 4326, Gecko_IOThread] WARNING: pipe error (82): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 4326, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588858822498	Marionette	INFO	Stopped listening on port 38103
+1588858965009	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileZNfri1"
+1588858965275	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858965314	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588858965315	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588858966729	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588858967078	Marionette	INFO	Listening on port 38043
+1588858967132	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:4847): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588859040709	Marionette	INFO	Stopped listening on port 38043
+1588859242679	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile4WYCUF"
+1588859242954	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859242995	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859242997	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859244416	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859244773	Marionette	INFO	Listening on port 38207
+1588859244804	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:5231): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588859305709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileqomfm1"
+1588859305968	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859306011	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859306013	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859307397	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859307738	Marionette	INFO	Listening on port 46843
+1588859309284	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:5529): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588859405802	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilev839Jf"
+1588859406074	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859406113	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859406115	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859407517	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859407855	Marionette	INFO	Listening on port 46763
+1588859407918	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:5845): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588859425888	Marionette	INFO	Stopped listening on port 46763
+1588859451553	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileIjLPKX"
+1588859451817	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859451857	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859451858	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859453270	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859453390	Marionette	INFO	Listening on port 46741
+1588859453480	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:6142): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588859472393	Marionette	INFO	Stopped listening on port 46741
+[Parent 5999, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588859522048	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileVh5IRR"
+1588859522320	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859522359	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859522360	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859523759	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859523963	Marionette	INFO	Listening on port 33099
+1588859524060	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:6473): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588859541690	Marionette	INFO	Stopped listening on port 33099
+[Parent 6330, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588859705982	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileaiyjUW"
+1588859706251	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859706290	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859706292	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859707704	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859708058	Marionette	INFO	Listening on port 46649
+1588859708092	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:6912): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588859725565	Marionette	INFO	Stopped listening on port 46649
+[Parent 6769, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588859745533	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile0Tq6jL"
+1588859745797	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859745837	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588859745839	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588859747248	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588859747472	Marionette	INFO	Listening on port 33363
+1588859747545	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:7198): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588859766151	Marionette	INFO	Stopped listening on port 33363
+[Parent 7053, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588860636199	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile0khOuX"
+1588860636475	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860636514	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588860636515	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588860637932	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860638270	Marionette	INFO	Listening on port 32811
+1588860638315	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:7880): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588860697175	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileJcYo0j"
+1588860697451	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860697490	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588860697492	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588860698881	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860699111	Marionette	INFO	Listening on port 43171
+1588860699185	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:8171): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588860750223	Marionette	INFO	Stopped listening on port 43171
+[Parent 7736, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588860756193	Marionette	INFO	Stopped listening on port 32811
+1588860765808	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile00M0RT"
+1588860766120	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860766159	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588860766160	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588860767576	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860767775	Marionette	INFO	Listening on port 34101
+1588860767824	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:8490): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: "Tried to send a 'tabDetached' event on an already destroyed actor 'frameTarget'"
+[Parent 8347, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 8347, Gecko_IOThread] WARNING: pipe error (87): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588860819655	Marionette	INFO	Stopped listening on port 34101
+1588860821319	Marionette	INFO	Stopped listening on port 46843
+[Parent 5088, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 5088, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588860822222	Marionette	INFO	Stopped listening on port 38207
+1588860830373	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilexxWFtW"
+1588860830639	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860830678	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588860830680	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588860832099	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588860832452	Marionette	INFO	Listening on port 36059
+1588860832487	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:8856): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588861183882	Marionette	INFO	Stopped listening on port 36059
+1588861275383	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilewlviu8"
+1588861275651	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861275690	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588861275691	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588861277101	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861277335	Marionette	INFO	Listening on port 36221
+1588861277397	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:9330): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588861297358	Marionette	INFO	Stopped listening on port 36221
+[Parent 9189, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 9189, Gecko_IOThread] WARNING: pipe error (59): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: jar:file:///usr/lib64/firefox/browser/omni.ja!/components/nsBrowserGlue.js, line 1363: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIAppShellService.hiddenDOMWindow]
+JavaScript error: resource://gre/modules/JSONFile.jsm, line 159: Error: Data is not ready.
+1588861324693	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileiXCE9B"
+1588861324988	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861325030	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588861325031	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588861326428	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861326629	Marionette	INFO	Listening on port 42203
+1588861326724	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:9639): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+1588861348764	Marionette	INFO	Stopped listening on port 42203
+[Parent 9494, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1588861360828	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileSR0WjZ"
+1588861361093	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861361132	addons.xpi-utils	WARN	addMetadata: Add-on aushelper@mozilla.org is invalid: [Exception... "Component returned failure code: 0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST) [nsIFile.isFile]"  nsresult: "0x80520006 (NS_ERROR_FILE_TARGET_DOES_NOT_EXIST)"  location: "JS frame :: resource://gre/modules/addons/XPIInstall.jsm :: get :: line 227"  data: no] Stack trace: get()@resource://gre/modules/addons/XPIInstall.jsm:227
+loadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:856
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIInstall.jsm:870
+addMetadata()@resource://gre/modules/addons/XPIDatabase.jsm:2395
+processFileChanges()@resource://gre/modules/addons/XPIDatabase.jsm:2736
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2556
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2134
+callProvider()@resource://gre/modules/AddonManager.jsm:206
+_startProvider()@resource://gre/modules/AddonManager.jsm:654
+startup()@resource://gre/modules/AddonManager.jsm:807
+startup()@resource://gre/modules/AddonManager.jsm:2802
+observe()@jar:file:///usr/lib64/firefox/omni.ja!/components/addonManager.js:66
+1588861361134	addons.xpi-utils	WARN	Could not uninstall invalid item from locked install location
+1588861362535	addons.xpi	WARN	Can't get modified time of /usr/lib64/firefox/browser/features/aushelper@mozilla.org.xpi
+1588861362734	Marionette	INFO	Listening on port 43715
+1588861362749	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib64/firefox/firefox:9937): dconf-WARNING **: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1588861385896	Marionette	INFO	Stopped listening on port 43715
+[Parent 9790, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /builddir/build/BUILD/firefox-63.0.3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
