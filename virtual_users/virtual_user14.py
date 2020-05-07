@@ -9,7 +9,7 @@ import getpass
 
 from selenium import webdriver
 
-default_target = "https://0.0.0.0:8080/login?redirect_msg=Registered%20successfully!%20Please%20Login."
+default_target = "https://0.0.0.0:8080/forum/new"
 
 def scrape(target):
 
@@ -20,37 +20,11 @@ def scrape(target):
 
     time.sleep(1)
 
-    print("Going to register page")
-    driver.get("https://0.0.0.0:8080/register")
+    print("Going to login page")
+    driver.get("https://0.0.0.0:8080/login")
 
-    username = "user"
-    password = "user"
-    print("Registering!")
-
-    # Enter username
-    username_field = driver.find_element_by_name("username")
-    username_field.clear()
-    username_field.send_keys(username)
-
-    # Enter password
-    password_field = driver.find_element_by_name("password")
-    password_field.clear()
-    password_field.send_keys(password)
-
-    # Enter confirm password
-    password_field = driver.find_element_by_name("confirm_password")
-    password_field.clear()
-    password_field.send_keys(password)
-    time.sleep(1)
-
-    # Hit the button
-    register_button = driver.find_element_by_name("registerButton")
-    register_button.click()
-    print("Registered!")
-
-
-    username = "user"
-    password = "user"
+    username = "test2"
+    password = "test2"
     print("Logging in")
 
     # Enter username
@@ -70,6 +44,88 @@ def scrape(target):
     login_button.click()
     print("Logged in!")
 
+    time.sleep(1)
+
+    forum_button = driver.find_element_by_name("forumButton")
+    forum_button.click()
+    time.sleep(1)
+
+    link3 = driver.find_element_by_link_text("New Thread")
+    link3.click()
+    time.sleep(1)
+
+    driver.get("https://0.0.0.0:8080/logout")
+    time.sleep(1)
+
+    print("Going to login page")
+    driver.get("https://0.0.0.0:8080/login")
+
+    username = "staff"
+    password = "staff"
+    print("Logging in")
+
+    # Enter username
+    username_field = driver.find_element_by_name("username")
+    username_field.clear()
+    username_field.send_keys(username)
+
+    # Enter password
+    password_field = driver.find_element_by_name("password")
+    password_field.clear()
+    password_field.send_keys(password)
+
+    time.sleep(1)
+    # Hit the button
+    login_button = driver.find_element_by_name("loginButton")
+    login_button.click()
+    print("Logged in!")
+
+    time.sleep(1)
+
+    profile = driver.find_element_by_link_text("Profile")
+    profile.click()
+    time.sleep(1)
+
+    link1 = driver.find_element_by_link_text("Manage Users")
+    link1.click()
+    time.sleep(1)
+
+    driver.get("https://0.0.0.0:8080/mute/test2")
+    time.sleep(1)
+
+    driver.get("https://0.0.0.0:8080/logout")
+    time.sleep(1)
+
+    username = "test2"
+    password = "test2"
+    print("Logging in")
+
+    print("Going to login page")
+    driver.get("https://0.0.0.0:8080/login")
+
+    # Enter username
+    username_field = driver.find_element_by_name("username")
+    username_field.clear()
+    username_field.send_keys(username)
+
+    # Enter password
+    password_field = driver.find_element_by_name("password")
+    password_field.clear()
+    password_field.send_keys(password)
+
+    time.sleep(1)
+
+    # Hit the button
+    login_button = driver.find_element_by_name("loginButton")
+    login_button.click()
+    print("Logged in!")
+
+    forum_button = driver.find_element_by_name("forumButton")
+    forum_button.click()
+    time.sleep(1)
+
+    link3 = driver.find_element_by_link_text("New Thread")
+    link3.click()
     time.sleep(1)
 
 
@@ -109,18 +165,18 @@ def scrape(target):
     link1.click()
     time.sleep(1)
 
-    driver.get("https://0.0.0.0:8080/delete/user")
+    driver.get("https://0.0.0.0:8080/unmute/test2")
     time.sleep(1)
 
     driver.get("https://0.0.0.0:8080/logout")
     time.sleep(1)
 
-    driver.get("https://0.0.0.0:8080/login")
-    time.sleep(1)
-
-    username = "user"
-    password = "user"
+    username = "test2"
+    password = "test2"
     print("Logging in")
+
+    print("Going to login page")
+    driver.get("https://0.0.0.0:8080/login")
 
     # Enter username
     username_field = driver.find_element_by_name("username")
@@ -131,15 +187,24 @@ def scrape(target):
     password_field = driver.find_element_by_name("password")
     password_field.clear()
     password_field.send_keys(password)
-
     time.sleep(1)
 
     # Hit the button
     login_button = driver.find_element_by_name("loginButton")
     login_button.click()
+    print("Logged in!")
     time.sleep(1)
-    print("Arrived at target")
 
+    forum_button = driver.find_element_by_name("forumButton")
+    forum_button.click()
+    time.sleep(1)
+
+    link3 = driver.find_element_by_link_text("New Thread")
+    link3.click()
+    time.sleep(1)
+
+    driver.get(target)
+    print("Arrived at target")
     time.sleep(1)
     print("Finished, closing web driver.")
     driver.close()
