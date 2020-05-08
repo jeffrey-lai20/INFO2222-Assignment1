@@ -175,6 +175,15 @@ If you are unsure why something is working in a particular way, be sure to read 
 ## Javascript ##
 Also not strictly a requirement, if you wish to use javascript it **must** be loaded locally, CDNs and loading from external sites is prohibited.
 
+## Virtual Users ##
+Using python3.7 to run virtual users, selenium needs to be installed:
+```pip install selenium```
+
+Virtual users can be run with the command:
+```python3 random_virtual.py```
+
+If there is no geckodriver name found, the following command also needs to be run:
+```export PATH=$PATH:.```
 
 ## End notes ##
 
